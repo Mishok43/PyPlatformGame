@@ -1,8 +1,8 @@
 """AudioManager is rensposible for loading, playing sounds and music."""
 
 import os
-from singleton import Singleton
 from pygame import mixer
+from singleton import Singleton
 
 class AudioManager(metaclass=Singleton):
     """
@@ -245,4 +245,3 @@ class AudioManager(metaclass=Singleton):
         """Stop every sound."""
         for sound in self.sounds:
             sound.stop()
-
