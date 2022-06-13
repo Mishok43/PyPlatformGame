@@ -48,7 +48,7 @@ class AudioManager(metaclass=Singleton):
         """Initialize AudioManager with default variables."""
         self.sounds = []
         self.sounds_handles = {}
-        self.sound_volume = 1.0
+        self.sound_volume = 0.5
         self.sounds_volumes = {}
         self.sounds_folder_dir = ""
         self.music_folder_dir = ""
@@ -178,6 +178,17 @@ class AudioManager(metaclass=Singleton):
         """
         mixer.music.set_volume(volume)
 
+    def get_background_volume(self) -> float:
+        """
+        Get background music volume.
+
+        Return
+        ------
+        float
+            background music volume
+        """
+        return mixer.music.get_volume()
+
     def set_sounds_volume(self, volume: float):
         """
         Will change volume of all sounds.
@@ -194,6 +205,16 @@ class AudioManager(metaclass=Singleton):
             k =  self.sounds_volumes[i_s] if (i_s in self.sounds_volumes) else 1.0
             self.sounds[i_s].set_volume(k*self.sound_volume)
 
+    def get_sounds_volume(self) -> float:
+        """
+        Get sounds volume.
+
+        Return
+        ------
+        float
+            sounds volume
+        """
+        return self.sound_volume
 
     def set_sound_volume(self, handle: int, volume: float) -> int:
         """

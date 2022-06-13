@@ -115,8 +115,7 @@ class Button:
     """GUI button. Supports both rendering and user interaction."""
 
     def __init__(self, inner_elem: BaseUIElem, b_descr: ButtonDescr,
-            pos_size: List[float], callback: Callable = None,
-            click_sound_filename: str = "click_button.wav"):
+            pos_size: List[float], callback: Callable = None):
         """Create button."""
         self.elem = inner_elem
         if len(pos_size) == 4:
@@ -129,10 +128,6 @@ class Button:
         self.descr = b_descr
         self.callback = callback
         self.pos = (pos_size[0], pos_size[1])
-        if click_sound_filename == "":
-            self.click_sound_handle = -1
-        else:
-            self.click_sound_handle = AudioManager().get_sound_handle(click_sound_filename)
 
     def render(self, background_tex: int) -> None:
         """Render button."""
@@ -174,8 +169,6 @@ class Button:
         """Process event to check if it is mouse click on button."""
         if self.mouse_over() and event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
             if self.callback is not None:
-                if self.click_sound_handle != -1:
-                    AudioManager().play_sound(self.click_sound_handle)
                 self.callback()
 
 @dataclass

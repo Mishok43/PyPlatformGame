@@ -9,16 +9,10 @@ from audiomanager import AudioManager
 import pygame as pg
 
 
-sound = 0.5
-music = 0.5
 def sound_callback(l: float):
-    global sound
-    sound = l
     AudioManager().set_sounds_volume(l)
     print('Sound', l)
 def music_callback(l: float):
-    global music
-    music = l
     AudioManager().set_background_volume(l)
     print('Music', l)
 
@@ -30,15 +24,28 @@ PAUSE = 3
 cur_state = MENU
 prev_state = MENU
 should_stop = False
+
+
+
+
 def exit_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(click_sound_handle)
+
     global should_stop
     should_stop = True
 
 def play_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(click_sound_handle)
+
     global cur_state
     cur_state = GAME
 
 def menu_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(click_sound_handle)
+
     global cur_state
     cur_state = MENU
 
@@ -99,8 +106,8 @@ def logic():
 
 audiomanager = AudioManager()
 audiomanager.init_sounds("sounds/", "sounds/")
-
 audiomanager.play_background_music("soundtrack.mp3")
+click_sound_handle = AudioManager().get_sound_handle("click_button.wav")
 
 pg.init()
 pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
@@ -108,16 +115,16 @@ pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
 pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
 pg.display.set_mode((1920, 1080), pg.OPENGL|pg.DOUBLEBUF)
 init_app_state((1920, 1080), 'shaders', 'assets/textures', 'assets/meshes')
-interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (music, sound))
+interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()))
 scene = Scene('assets/scene.json')
 FPS = 60
 clock = pg.time.Clock()
 while True:
     if cur_state != prev_state:
         if cur_state == MENU:
-            interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (music, sound))
+            interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()))
         elif cur_state == PAUSE:
-            interface = pause_ui(play_callback, menu_callback, music_callback, sound_callback, (music, sound))
+            interface = pause_ui(play_callback, menu_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()))
         elif cur_state == GAME:
             interface = game_ui()
         prev_state = cur_state
