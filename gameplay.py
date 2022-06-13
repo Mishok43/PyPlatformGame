@@ -1,4 +1,5 @@
 """Module for gameplay code (level load, physics, controls)."""
+from dataclasses import dataclass
 from typing import Callable
 import json
 import esper
@@ -15,15 +16,23 @@ from . import player
 from . import enemy
 from . import death_manager
 
+@dataclass
+class GameplayCallbacks:
+    """Callbacks for various gameplay events."""
+    billboard_render: Callable
+    player_death: Callable
+    enemy_death: Callable
+
 class Gameplay:
     """Level management, physics and player controls."""
 
-    def __init__(self, level_filename: str, billboard_render_callback: Callable):
+    def __init__(self, level_filename: str, clb: GameplayCallbacks):
         """Load description of level from JSON file."""
         self.world = esper.World()
-        self.world.add_processor(billy.RenderProcessor(billboard_render_callback))
+        self.world.add_processor(billy.RenderProcessor(clb.billboard_render))
         self.world.add_processor(player.PhysicsProcessor(), priority=2)
-        self.world.add_processor(death_manager.DeathProcessor(), priority=3)
+        self.world.add_processor(death_manager.DeathProcessor(clb.player_death,
+                                                clb.enemy_death), priority=3)
         self.world.add_processor(collision.CollisionProcessor(), priority=4)
         self.world.add_processor(ceiling_bump.CeilingBumpProcessor(), priority=5)
         self.world.add_processor(gravity.GravityProcessor(), priority=6)

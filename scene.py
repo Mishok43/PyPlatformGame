@@ -119,8 +119,6 @@ class Scene:
             #                     app_state().texture_manager.get(elem.tex_name))
             app_state().mesh_manager.draw(elem.mesh_name)
         # billboards
-        GL.glDisable(GL.GL_DEPTH_TEST)
-        GL.glDepthMask(GL.GL_FALSE)
         app_state().shader_manager.use_program('tex_rect')
         blend = GL.glGetBooleanv(GL.GL_BLEND)
         blend_src = GL.glGetIntegerv(GL.GL_BLEND_SRC_ALPHA)
