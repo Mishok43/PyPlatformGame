@@ -1,12 +1,13 @@
+import os
 import glm
 from math import sin, cos
-from app_state import app_state, init_app_state, delete_app_state
-from render.shaders import ShaderManager
-from ui_descr import menu_ui, pause_ui, game_ui
-from scene import Scene, Light, Camera
-from renderer import draw
+from .app_state import app_state, init_app_state, delete_app_state
+# from .render.shaders import ShaderManager
+from .ui_descr import menu_ui, pause_ui, game_ui
+from .scene import Scene, Camera
+from .renderer import draw
 import pygame as pg
-
+from .physics_test import init_physics, process_input
 
 sound = 0.5
 music = 0.5
@@ -39,9 +40,6 @@ def menu_callback():
     global cur_state
     cur_state = MENU
 
-
-
-
 pos = glm.vec3(0.0, 0.0, 0.0)
 dir = glm.vec3(0.0, 0.0, -1.0)
 x_rot = 0
@@ -65,20 +63,24 @@ def process_mouse():
     mouse_y = y
 
 scene = None
+world = None
+input_entity = None
 def process_keyboard():
     global cur_state
     global scene
     keys = pg.key.get_pressed()
     global pos
-    if keys[pg.K_w]:
-        pos += dir * 0.001
-    elif keys[pg.K_s]:
-        pos -= dir * 0.001
-    elif keys[pg.K_r]:
-        app_state().shader_manager = ShaderManager('shaders')
-        scene = Scene('assets/scene.json')
-    elif keys[pg.K_ESCAPE]:
+    # if keys[pg.K_w]:
+    #     pos += dir * 0.001
+    # elif keys[pg.K_s]:
+    #     pos -= dir * 0.001
+    # elif keys[pg.K_r]:
+    #     app_state().shader_manager = ShaderManager('shaders')
+    #     scene = Scene('assets/scene.json')
+    if keys[pg.K_ESCAPE]:
         cur_state = PAUSE
+    else:
+        process_input(world, input_entity, keys)
 
 def logic():
     global should_stop
@@ -98,12 +100,19 @@ pg.init()
 pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
 pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
 pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
-pg.display.set_mode((1920, 1080), pg.OPENGL|pg.DOUBLEBUF)
-init_app_state((1920, 1080), 'shaders', 'assets/textures', 'assets/meshes')
+pg.display.set_mode((800, 600), pg.OPENGL|pg.DOUBLEBUF)
+base_dir = os.path.dirname(__file__)
+init_app_state((800, 600),
+            os.path.join(base_dir, 'shaders'),
+            os.path.join(base_dir, 'assets', 'textures'),
+            os.path.join(base_dir, 'assets', 'meshes'))
 interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music))
-scene = Scene('assets/scene.json')
+scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
 FPS = 60
 clock = pg.time.Clock()
+def billboard_callback(pos, size):
+    scene.add_bilboard('test.png', (pos[0] / app_state().screen_res[0], pos[1] / app_state().screen_res[1]), (size[0] / app_state().screen_res[0], size[1] / app_state().screen_res[1]))
+world, input_entity = init_physics(billboard_callback)
 while True:
     if cur_state != prev_state:
         if cur_state == MENU:
@@ -113,10 +122,11 @@ while True:
         elif cur_state == GAME:
             interface = game_ui()
         prev_state = cur_state
-    clock.tick(FPS)
+    delta_time = clock.tick(FPS) / 1000
     scene.before_render()
-    # scene.add_bilboard('test.png', (0.05, 0.05), (0.1, 0.1))
     logic()
+    if cur_state != MENU:
+        world.process(delta_time)
     if should_stop:
         break
     draw(scene, interface, Camera(pos, dir))
