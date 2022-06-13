@@ -14,9 +14,8 @@ from .physics import gravity
 from . import billboard_renderer as billy
 
 
-PLAYER_SPEED = 500.0
-JUMP_MULTIPLIER = 5
-FALL_MULTIPLIER = 2
+PLAYER_SPEED = 0.625
+JUMP_MULTIPLIER = 0.00833
 
 
 class PhysicsProcessor(esper.Processor):
@@ -85,9 +84,9 @@ class DisjointedController(esper.Processor):
             state = self.world.component_for_entity(params.host, StateComponent)
 
             if state.face_right:
-                box.pos = glm.vec2(aabb.extent(host_box).x + 1.0, aabb.top(host_box))
+                box.pos = glm.vec2(aabb.extent(host_box).x, aabb.top(host_box))
             else:
-                box.pos = glm.vec2(aabb.left(host_box) - box.dim.x - 1.0, aabb.top(host_box))
+                box.pos = glm.vec2(aabb.left(host_box) - box.dim.x, aabb.top(host_box))
             self.world.add_component(ent, box)
 
             params.time -= dt
@@ -158,7 +157,7 @@ class InputProcessor(esper.Processor):
                 state.has_disjointed = True
                 self.world.add_component(ent, state)
 
-                self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(30, 30)),
+                self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(0.05, 0.05)),
                         billy.TextureComponent(tex_name="test.png"),
                         collision.ActiveCollisionComponent(),
                         collision.HurtComponent(),

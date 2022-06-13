@@ -1,26 +1,26 @@
 {
     "player": {
         "texture": "test.png",
-        "pos": [200, 200],
-        "dim": [50, 50]
+        "pos": [0.333, 0.333],
+        "dim": [0.0833, 0.0833]
     },
     "enemies": [
         {
             "texture": "test.png",
-            "pos": [500, 300],
-            "dim": [50, 100],
+            "pos": [0.8333, 0.5],
+            "dim": [0.0833, 0.1667],
             "motion": {
-                "direction": [100, 0],
+                "direction": [0.1667, 0],
                 "mirror_time": 2.0,
                 "mirror_axis": [1, 0] 
             }
         },
         {
             "texture": "test.png",
-            "pos": [50, 50],
-            "dim": [144, 100],
+            "pos": [0.0833, 0.0833],
+            "dim": [0.24, 0.1667],
             "motion": {
-                "direction": [0, 150],
+                "direction": [0, 0.25],
                 "mirror_time": 1.0,
                 "mirror_axis": [0, 1] 
             }
@@ -29,13 +29,13 @@
     "platforms": [
         {
             "texture": "test.png",
-            "pos": [400, 400],
-            "dim": [800, 20]
+            "pos": [0.6667, 0.6667],
+            "dim": [1, 0.0333]
         },
         {
             "texture": "test.png",
-            "pos": [0, 580],
-            "dim": [800, 20]
+            "pos": [0, 0.9667],
+            "dim": [1, 0.0333]
         }
     ]
 }

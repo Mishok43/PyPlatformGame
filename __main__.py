@@ -66,8 +66,8 @@ def process_mouse():
     mouse_y = y
 
 def billboard_callback(tex, pos, size):
-    rel_size = (size[0] / app_state().screen_res[0], size[1] / app_state().screen_res[1])
-    scene.add_bilboard(tex, (pos[0] / app_state().screen_res[0] + 0.5 * rel_size[0], pos[1] / app_state().screen_res[1] + 0.5 * rel_size[1]), rel_size)
+    h_w = app_state().screen_res[1] / app_state().screen_res[0]
+    scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
 
 scene = None
 world = None
