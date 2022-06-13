@@ -2,8 +2,8 @@
 from dataclasses import dataclass
 from typing import Callable, List, Tuple
 import pygame as pg
-from .app_state import app_state
-from .gui import ButtonDescr, SliderDescr, Button, Slider, TextRect, BaseUIElem
+from app_state import app_state
+from gui import ButtonDescr, SliderDescr, Button, Slider, TextRect, BaseUIElem
 
 @dataclass
 class UI:

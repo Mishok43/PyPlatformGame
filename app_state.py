@@ -1,10 +1,10 @@
 """More convinient processing of global state."""
 from dataclasses import dataclass
 from typing import Tuple
-from .render.shaders import ShaderManager
-from .render.textures import TextureManager
-from .render.rtargets import RTargetManager
-from .render.meshes import MeshManager
+from render.shaders import ShaderManager
+from render.textures import TextureManager
+from render.rtargets import RTargetManager
+from render.meshes import MeshManager
 
 @dataclass
 class AppState:

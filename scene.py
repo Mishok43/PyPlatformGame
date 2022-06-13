@@ -4,7 +4,7 @@ import json
 from typing import Tuple
 from OpenGL import GL
 import glm
-from .app_state import app_state
+from app_state import app_state
 
 @dataclass
 class SceneElem:

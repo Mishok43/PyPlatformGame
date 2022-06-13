@@ -2,7 +2,7 @@
 
 
 from dataclasses import dataclass
-from typing import Callable, Tuple
+from typing import Tuple
 
 import esper
 import pygame
@@ -24,16 +24,17 @@ class ColorComponent:
 class RenderProcessor(esper.Processor):
     """Render processor for ECS."""
 
-    def __init__(self, callback: Callable):
+    def __init__(self, screen: pygame.Surface):
         """Initialize debug renderer."""
-        self.callback = callback
+        self.screen = screen
 
     def process(self, *_):
         """Render AABB components in different colors with Pygame."""
+        self.screen.fill((0, 0, 0))
 
         for _, (box, color) in self.world.get_components(aabb.AABBComponent, ColorComponent):
             surface = pygame.Surface(box.dim)
             surface.fill(color.color)
             rect = pygame.Rect(*box.pos, *box.dim)
 
-            self.callback(box.pos, box.dim)
+            self.screen.blit(surface, rect)
