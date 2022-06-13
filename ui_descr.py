@@ -14,7 +14,8 @@ class UI:
     others: List[Tuple[BaseUIElem, float, float]]
 
 def menu_ui(play_callback: Callable, exit_callback: Callable, music_callback: Callable,
-            sound_callback: Callable, sounds: Tuple[float, float]) -> UI:
+            sound_callback: Callable, sounds: Tuple[float, float],
+            lang_callbacks: Tuple[Callable, Callable]) -> UI:
     """Create ui for main menu."""
     button_descr = ButtonDescr()
     slider_descr = SliderDescr(size=(0.5, 0.03), inner_fract=(0.125, 3.0))
@@ -23,20 +24,24 @@ def menu_ui(play_callback: Callable, exit_callback: Callable, music_callback: Ca
     sound_font = int(64 / 1280 * app_state().screen_res[0])
     return UI(
         [
-            Button(TextRect('Play', pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+            Button(TextRect(_('Play'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
                     button_descr, [0.5, 0.325, 0.2, 0.13], play_callback),
-            Button(TextRect('Exit', pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
-                    button_descr, [0.5, 0.85, 0.2, 0.13], exit_callback)
+            Button(TextRect(_('Exit'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+                    button_descr, [0.5, 0.9, 0.1, 0.13], exit_callback),
+            Button(TextRect(_('Ru'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+                    button_descr, [0.4, 0.5, 0.1, 0.13], lang_callbacks[0]),
+            Button(TextRect(_('En'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+                    button_descr, [0.6, 0.5, 0.1, 0.13], lang_callbacks[1])
         ],
         [
-            Slider(slider_descr, (0.6, 0.6), sounds[0], music_callback),
-            Slider(slider_descr, (0.6, 0.7), sounds[1], sound_callback)
+            Slider(slider_descr, (0.6, 0.65), sounds[0], music_callback),
+            Slider(slider_descr, (0.6, 0.75), sounds[1], sound_callback)
         ],
         [
-            (TextRect('GAME', pg.font.SysFont('arial', name_font), (0, 0, 0, 255)), 0.5, 0.15),
-            (TextRect('Loudness', pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.5, 0.46),
-            (TextRect('Music', pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.6),
-            (TextRect('Sounds', pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.7)
+            (TextRect(_('GAME'), pg.font.SysFont('arial', name_font), (0, 0, 0, 255)), 0.5, 0.15),
+            (TextRect(_('Language'), pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.5),
+            (TextRect(_('Music'), pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.65),
+            (TextRect(_('Sounds'), pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.75)
         ]
     )
 
@@ -49,9 +54,9 @@ def pause_ui(continue_callback: Callable, menu_callback: Callable, music_callbac
     sound_font = int(64 / 1280 * app_state().screen_res[0])
     return UI(
         [
-            Button(TextRect('Continue', pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+            Button(TextRect(_('Continue'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
                     button_descr, [0.5, 0.2, 0.4, 0.13], continue_callback),
-            Button(TextRect('Main menu', pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+            Button(TextRect(_('Main menu'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
                     button_descr, [0.5, 0.8, 0.4, 0.13], menu_callback)
         ],
         [
@@ -59,9 +64,9 @@ def pause_ui(continue_callback: Callable, menu_callback: Callable, music_callbac
             Slider(slider_descr, (0.6, 0.6), sounds[1], sound_callback)
         ],
         [
-            (TextRect('Loudness', pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.5, 0.35),
-            (TextRect('Music', pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.5),
-            (TextRect('Sounds', pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.6)
+            (TextRect(_('Loudness'), pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.5, 0.35),
+            (TextRect(_('Music'), pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.5),
+            (TextRect(_('Sounds'), pg.font.SysFont('arial', sound_font), (0, 0, 0, 255)), 0.25, 0.6)
         ]
     )
 
@@ -72,15 +77,15 @@ def results_ui(restart_callback: Callable, menu_callback: Callable, killed_enemy
     result_font = int(128 / 1280 * app_state().screen_res[0])
     return UI(
         [
-            Button(TextRect('Restart', pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+            Button(TextRect(_('Restart'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
                     button_descr, [0.5, 0.55, 0.4, 0.13], restart_callback),
-            Button(TextRect('Main menu', pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
+            Button(TextRect(_('Main menu'), pg.font.SysFont('arial', buttons_font), (0, 0, 0, 255)),
                     button_descr, [0.5, 0.75, 0.4, 0.13], menu_callback)
         ],
         [],
         [
-            (TextRect('YOU LOST!!!', pg.font.SysFont('arial', result_font), (255, 0, 0, 255)), 0.5, 0.15),
-            (TextRect('ENEMIES KILLED: {}'.format(killed_enemy_count),
+            (TextRect(_('YOU LOST!!!'), pg.font.SysFont('arial', result_font), (255, 0, 0, 255)), 0.5, 0.15),
+            (TextRect(_('ENEMIES KILLED: {}').format(killed_enemy_count),
                     pg.font.SysFont('arial', result_font), (0, 0, 0, 255)), 0.5, 0.35),
         ]
     )
