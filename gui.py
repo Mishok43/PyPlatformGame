@@ -5,7 +5,7 @@ from OpenGL import GL
 import pygame as pg
 import glm
 from app_state import app_state
-from audiomanager import AudioManager
+
 class BaseUIElem:
     """Base UI elem that can be placed inside a button."""
 
