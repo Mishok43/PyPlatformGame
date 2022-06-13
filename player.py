@@ -11,7 +11,7 @@ from .physics import velocity
 from .physics import collision
 from . import input_data
 from .physics import gravity
-from .debug import renderer as debug_renderer
+from . import billboard_renderer as billy
 
 
 PLAYER_SPEED = 500.0
@@ -159,7 +159,7 @@ class InputProcessor(esper.Processor):
                 self.world.add_component(ent, state)
 
                 self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(30, 30)),
-                        debug_renderer.ColorComponent(color=(255, 255, 0)),
+                        billy.TextureComponent(tex_name="test.png"),
                         collision.ActiveCollisionComponent(),
                         collision.HurtComponent(),
                         DisjointedParamsComponent(time=0.1, host=ent))
