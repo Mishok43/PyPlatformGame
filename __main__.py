@@ -7,7 +7,7 @@ from .ui_descr import menu_ui, pause_ui, game_ui
 from .scene import Scene, Light, Camera
 from .renderer import draw
 import pygame as pg
-from .gameplay import init_physics, process_input
+from .gameplay import Gameplay
 
 sound = 0.5
 music = 0.5
@@ -65,25 +65,30 @@ def process_mouse():
     mouse_x = x
     mouse_y = y
 
+def billboard_callback(tex, pos, size):
+    rel_size = (size[0] / app_state().screen_res[0], size[1] / app_state().screen_res[1])
+    scene.add_bilboard(tex, (pos[0] / app_state().screen_res[0] + 0.5 * rel_size[0], pos[1] / app_state().screen_res[1] + 0.5 * rel_size[1]), rel_size)
+
 scene = None
 world = None
 input_entity = None
+gameplay = None
 def process_keyboard():
     global cur_state
     global scene
-    keys = pg.key.get_pressed()
+    global gameplay
     global pos
-    if keys[pg.K_w]:
+    keys = pg.key.get_pressed()
+    if keys[pg.K_e]:
         pos += dir * 0.001
-    elif keys[pg.K_s]:
+    elif keys[pg.K_q]:
         pos -= dir * 0.001
     elif keys[pg.K_r]:
         app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
         scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
-    if keys[pg.K_ESCAPE]:
+        gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'), billboard_callback)
+    elif keys[pg.K_ESCAPE]:
         cur_state = PAUSE
-    else:
-        process_input(world, input_entity, keys)
 
 def logic():
     global should_stop
@@ -109,16 +114,12 @@ init_app_state((1280, 720),
             os.path.join(base_dir, 'shaders'),
             os.path.join(base_dir, 'assets', 'textures'),
             os.path.join(base_dir, 'assets', 'meshes'))
+gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'), billboard_callback)
 interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music))
 scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
-FPS = 60
 clock = pg.time.Clock()
+FPS = 60
 
-def billboard_callback(tex, pos, size):
-    rel_size = (size[0] / app_state().screen_res[0], size[1] / app_state().screen_res[1])
-    scene.add_bilboard(tex, (pos[0] / app_state().screen_res[0] + 0.5 * rel_size[0], pos[1] / app_state().screen_res[1] + 0.5 * rel_size[1]), rel_size)
-
-world, input_entity = init_physics(billboard_callback)
 while True:
     if cur_state != prev_state:
         if cur_state == MENU:
@@ -130,9 +131,12 @@ while True:
         prev_state = cur_state
     delta_time = clock.tick(FPS) / 1000
     scene.before_render()
-    if cur_state != MENU:
-        world.process(delta_time)
     logic()
+    gameplay.process_input()
+    if cur_state == PAUSE:
+        gameplay.update(0)
+    elif cur_state == GAME:
+        gameplay.update(delta_time)
     if should_stop:
         break
     draw(scene, interface, Camera(pos, dir))
