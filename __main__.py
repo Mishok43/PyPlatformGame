@@ -73,13 +73,13 @@ def process_keyboard():
     global scene
     keys = pg.key.get_pressed()
     global pos
-    # if keys[pg.K_w]:
-    #     pos += dir * 0.001
-    # elif keys[pg.K_s]:
-    #     pos -= dir * 0.001
-    # elif keys[pg.K_r]:
-    #     app_state().shader_manager = ShaderManager('shaders')
-    #     scene = Scene('assets/scene.json')
+    if keys[pg.K_w]:
+        pos += dir * 0.001
+    elif keys[pg.K_s]:
+        pos -= dir * 0.001
+    elif keys[pg.K_r]:
+        app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
+        scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
     if keys[pg.K_ESCAPE]:
         cur_state = PAUSE
     else:
@@ -132,7 +132,6 @@ while True:
     scene.before_render()
     if cur_state != MENU:
         world.process(delta_time)
-    # scene.add_bilboard('test.png', (0.05, 0.05), (0.1, 0.1))
     logic()
     if should_stop:
         break
