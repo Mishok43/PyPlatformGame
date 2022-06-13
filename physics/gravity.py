@@ -9,8 +9,8 @@ import esper
 from . import velocity
 
 
-DT_COMPENSATOR = 20
-MAX_MODIFIER = 3
+DT_COMPENSATOR = 0.0333
+MAX_MODIFIER = 0.005
 
 
 @dataclass

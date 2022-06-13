@@ -54,6 +54,7 @@ class CollisionComponent:
         self.time = float(time)
         self.normal = glm.vec2(normal)
 
+HURTBOX_TEST_MUL = 2048
 
 class CollisionProcessor(esper.Processor):
     """Collision processor for ECS."""
@@ -86,8 +87,10 @@ class CollisionProcessor(esper.Processor):
             for pas_ent, _ in active[idx+1:]:
                 pas_aabb = self.world.component_for_entity(pas_ent, aabb.AABBComponent)
 
-                act_rect = pygame.Rect(*act_aabb.pos, *act_aabb.dim)
-                pas_rect = pygame.Rect(*pas_aabb.pos, *pas_aabb.dim)
+                act_rect = pygame.Rect(*act_aabb.pos*HURTBOX_TEST_MUL,
+                                       *act_aabb.dim*HURTBOX_TEST_MUL)
+                pas_rect = pygame.Rect(*pas_aabb.pos*HURTBOX_TEST_MUL,
+                                       *pas_aabb.dim*HURTBOX_TEST_MUL)
 
                 if act_rect.colliderect(pas_rect):
                     if _ := self.world.try_component(pas_ent, HurtComponent):
