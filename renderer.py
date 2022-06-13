@@ -1,8 +1,8 @@
 """Main draw call."""
 from OpenGL import GL
-from app_state import app_state
-from scene import Scene, Camera
-from ui_descr import UI
+from .app_state import app_state
+from .scene import Scene, Camera
+from .ui_descr import UI
 
 def draw(scene : Scene, interface: UI, camera: Camera):
     """Render current scene and interface."""

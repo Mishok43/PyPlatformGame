@@ -1,10 +1,11 @@
 import glm
 from math import sin, cos
-from app_state import app_state, init_app_state, delete_app_state
-from render.shaders import ShaderManager
-from ui_descr import menu_ui, pause_ui, game_ui
-from scene import Scene, Light, Camera
-from renderer import draw
+import os
+from .app_state import app_state, init_app_state, delete_app_state
+from .render.shaders import ShaderManager
+from .ui_descr import menu_ui, pause_ui, game_ui
+from .scene import Scene, Light, Camera
+from .renderer import draw
 import pygame as pg
 
 
@@ -99,9 +100,13 @@ pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
 pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
 pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
 pg.display.set_mode((1920, 1080), pg.OPENGL|pg.DOUBLEBUF)
-init_app_state((1920, 1080), 'shaders', 'assets/textures', 'assets/meshes')
+base_dir = os.path.dirname(__file__)
+init_app_state((1920, 1080),
+            os.path.join(base_dir, 'shaders'),
+            os.path.join(base_dir, 'assets', 'textures'),
+            os.path.join(base_dir, 'assets', 'meshes'))
 interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music))
-scene = Scene('assets/scene.json')
+scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
 FPS = 60
 clock = pg.time.Clock()
 while True:

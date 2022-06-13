@@ -4,7 +4,7 @@ import json
 from typing import Tuple
 from OpenGL import GL
 import glm
-from app_state import app_state
+from .app_state import app_state
 
 @dataclass
 class SceneElem:
@@ -115,8 +115,8 @@ class Scene:
                             elem.y_rotation, glm.vec3(0,1,0))
             GL.glUniformMatrix4fv(app_state().shader_manager.get_uniform('M'),
                                 1, GL.GL_FALSE, glm.value_ptr(matrix))
-            app_state().shader_manager.set_texture('color_tex',
-                                app_state().texture_manager.get(elem.tex_name))
+            # app_state().shader_manager.set_texture('color_tex',
+            #                     app_state().texture_manager.get(elem.tex_name))
             app_state().mesh_manager.draw(elem.mesh_name)
         # billboards
         GL.glDisable(GL.GL_DEPTH_TEST)
