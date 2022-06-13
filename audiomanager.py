@@ -1,9 +1,10 @@
 """AudioManager is rensposible for loading, playing sounds and music."""
 
 import os
+from singleton import Singleton
 from pygame import mixer
 
-class AudioManager():
+class AudioManager(metaclass=Singleton):
     """
     AudioManager class for loading, managing and playing sounds and musics.
 
@@ -26,7 +27,7 @@ class AudioManager():
     SOUNDS_EXTENSIONS = ['.wav', '.mp3']
 
 
-    def __init__(self, sounds_folder_dir: str, music_folder_dir: str):
+    def init_sounds(self, sounds_folder_dir: str, music_folder_dir: str):
         """Initialize AudioManager with passing paths to a folder with sounds and music effects.
 
         It runs loads_sounds automatically.
@@ -40,14 +41,17 @@ class AudioManager():
         """
         self.sounds_folder_dir = sounds_folder_dir
         self.music_folder_dir = music_folder_dir
+        mixer.init()
+        self.load_sounds()
 
+    def __init__(self):
+        """Initialize AudioManager with default variables."""
         self.sounds = []
         self.sounds_handles = {}
         self.sound_volume = 1.0
         self.sounds_volumes = {}
-
-        mixer.init()
-        self.load_sounds()
+        self.sounds_folder_dir = ""
+        self.music_folder_dir = ""
 
 
     def load_sounds(self):
@@ -120,6 +124,24 @@ class AudioManager():
         self.sounds[handle].play()
         self.sounds[handle].set_volume(self.sounds_volumes[handle]*self.sound_volume)
         return 1
+
+    def play_sound_by_name(self, filename: str, volume: float=1.0) -> int:
+        """
+        Play a sound based on its filename.
+
+        Parameters
+        ----------
+        filename : str
+            sound filename
+        volume : float, optional
+            sound volume
+
+        Return
+        -------
+        int
+            If filename is correct, Return 1. Else in Return 0
+        """
+        return self.play_sound(self.get_sound_handle(filename), volume)
 
     def play_background_music(self, filename: str , loop: int=-1):
         """
@@ -223,3 +245,4 @@ class AudioManager():
         """Stop every sound."""
         for sound in self.sounds:
             sound.stop()
+
