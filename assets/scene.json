@@ -1,0 +1,22 @@
+{
+    "scene": [
+        {
+            "mesh_name": "bunny.obj",
+            "tex_name": "test.png",
+            "transforms": [
+                {
+                    "position": [0, 0, 0],
+                    "scale": [1, 1, 1],
+                    "y_rotation": 0
+                }
+            ]
+        }
+    ],
+    "z_near": 0.01,
+    "z_far": 10.0,
+    "shadow_z_near": 0.01,
+    "shadow_z_far": 1.0,
+    "shadow_fov": 0.1,
+    "light_pos": [-0.138, 0.158, 0.074],
+    "light_dir": [0.615, -0.627, -0.478]
+}
