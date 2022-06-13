@@ -22,7 +22,7 @@ void main() {
             float d2 = texture(depthTex, texcoords - offset).r;
             float diff1 = depth - d1;
             float diff2 = depth - d2;
-            if (d1 < 0.999 && d2 < 0.999 && diff1 * diff2 > 0)
+            if (d1 < 0.999 && d2 < 0.999 && diff1 * diff2 > 0 && d1 > 0.0 && d2 > 0.0)
                 res += (diff1 * (1.0 - smoothstep(0.005, 0.0075, abs(diff1))) + diff2 * (1.0 - smoothstep(0.005, 0.0075, abs(diff2)))) * k[i];
         }
     }
