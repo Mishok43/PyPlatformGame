@@ -3,11 +3,11 @@ from math import sin, cos
 import os
 from .app_state import app_state, init_app_state, delete_app_state
 from .render.shaders import ShaderManager
-from .ui_descr import menu_ui, pause_ui, game_ui
-from .scene import Scene, Light, Camera
+from .ui_descr import menu_ui, pause_ui, game_ui, results_ui
+from .scene import Scene, Camera
 from .renderer import draw
 import pygame as pg
-from .gameplay import Gameplay
+from .gameplay import Gameplay, GameplayCallbacks
 
 sound = 0.5
 music = 0.5
@@ -21,13 +21,29 @@ def music_callback(l: float):
     print('Music', l)
 
 
-
+killed_enemy_count = 0
 MENU = 1
 GAME = 2
 PAUSE = 3
+RESULTS = 4
 cur_state = MENU
 prev_state = MENU
 should_stop = False
+scene = None
+gameplay = None
+
+def billboard_render(tex, pos, size):
+    h_w = app_state().screen_res[1] / app_state().screen_res[0]
+    scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
+
+def enemy_death_callback():
+    global killed_enemy_count
+    killed_enemy_count += 1
+
+def player_death_callback():
+    global cur_state
+    cur_state = RESULTS
+
 def exit_callback():
     global should_stop
     should_stop = True
@@ -38,8 +54,21 @@ def play_callback():
 
 def menu_callback():
     global cur_state
+    global killed_enemy_count
+    global gameplay
+    killed_enemy_count = 0
     cur_state = MENU
+    gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
+            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
 
+def restart_callback():
+    global cur_state
+    global killed_enemy_count
+    global gameplay
+    killed_enemy_count = 0
+    cur_state = GAME
+    gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
+            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
 
 
 
@@ -65,14 +94,6 @@ def process_mouse():
     mouse_x = x
     mouse_y = y
 
-def billboard_callback(tex, pos, size):
-    h_w = app_state().screen_res[1] / app_state().screen_res[0]
-    scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
-
-scene = None
-world = None
-input_entity = None
-gameplay = None
 def process_keyboard():
     global cur_state
     global scene
@@ -86,7 +107,8 @@ def process_keyboard():
     elif keys[pg.K_r]:
         app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
         scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
-        gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'), billboard_callback)
+        gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
+            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
     elif keys[pg.K_ESCAPE]:
         cur_state = PAUSE
 
@@ -114,7 +136,8 @@ init_app_state((1280, 720),
             os.path.join(base_dir, 'shaders'),
             os.path.join(base_dir, 'assets', 'textures'),
             os.path.join(base_dir, 'assets', 'meshes'))
-gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'), billboard_callback)
+gameplay = gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
+            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
 interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music))
 scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
 clock = pg.time.Clock()
@@ -128,6 +151,8 @@ while True:
             interface = pause_ui(play_callback, menu_callback, sound_callback, music_callback, (sound, music))
         elif cur_state == GAME:
             interface = game_ui()
+        elif cur_state == RESULTS:
+            interface = results_ui(restart_callback, menu_callback, killed_enemy_count)
         prev_state = cur_state
     delta_time = clock.tick(FPS) / 1000
     scene.before_render()
