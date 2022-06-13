@@ -1,5 +1,6 @@
 import glm
 from math import sin, cos
+import gettext
 import os
 from .app_state import app_state, init_app_state, delete_app_state
 from .render.shaders import ShaderManager
@@ -27,7 +28,7 @@ GAME = 2
 PAUSE = 3
 RESULTS = 4
 cur_state = MENU
-prev_state = MENU
+prev_state = None
 should_stop = False
 scene = None
 gameplay = None
@@ -70,7 +71,21 @@ def restart_callback():
     gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
             GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
 
+def lang_callback_ru():
+    global prev_state
+    prev_state = None
+    base_dir = os.path.dirname(__file__)
+    t = gettext.translation('messages', os.path.join(base_dir, 'locals'), languages=['ru'])
+    t.install()
 
+def lang_callback_en():
+    global prev_state
+    prev_state = None
+    base_dir = os.path.dirname(__file__)
+    t = gettext.translation('messages', os.path.join(base_dir, 'locals'), languages=['en'])
+    t.install()
+
+lang_callback_en()
 
 pos = glm.vec3(0.0, 0.0, 0.0)
 dir = glm.vec3(0.0, 0.0, -1.0)
@@ -138,7 +153,6 @@ init_app_state((1280, 720),
             os.path.join(base_dir, 'assets', 'meshes'))
 gameplay = gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
             GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
-interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music))
 scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
 clock = pg.time.Clock()
 FPS = 60
@@ -146,7 +160,7 @@ FPS = 60
 while True:
     if cur_state != prev_state:
         if cur_state == MENU:
-            interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music))
+            interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music), (lang_callback_ru, lang_callback_en))
         elif cur_state == PAUSE:
             interface = pause_ui(play_callback, menu_callback, sound_callback, music_callback, (sound, music))
         elif cur_state == GAME:

@@ -1,0 +1,75 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-06-14 01:45+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.1\n"
+
+#: ui_descr.py:27
+msgid "Play"
+msgstr ""
+
+#: ui_descr.py:29
+msgid "Exit"
+msgstr ""
+
+#: ui_descr.py:31
+msgid "Ru"
+msgstr ""
+
+#: ui_descr.py:33
+msgid "En"
+msgstr ""
+
+#: ui_descr.py:41
+msgid "GAME"
+msgstr ""
+
+#: ui_descr.py:42
+msgid "Language"
+msgstr ""
+
+#: ui_descr.py:43 ui_descr.py:68
+msgid "Music"
+msgstr ""
+
+#: ui_descr.py:44 ui_descr.py:69
+msgid "Sounds"
+msgstr ""
+
+#: ui_descr.py:57
+msgid "Continue"
+msgstr ""
+
+#: ui_descr.py:59 ui_descr.py:82
+msgid "Main menu"
+msgstr ""
+
+#: ui_descr.py:67
+msgid "Loudness"
+msgstr ""
+
+#: ui_descr.py:80
+msgid "Restart"
+msgstr ""
+
+#: ui_descr.py:87
+msgid "YOU LOST!!!"
+msgstr ""
+
+#: ui_descr.py:88
+msgid "ENEMIES KILLED: {}"
+msgstr ""
+
