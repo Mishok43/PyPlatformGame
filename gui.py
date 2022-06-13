@@ -4,7 +4,7 @@ from typing import Callable, Tuple, List
 from OpenGL import GL
 import pygame as pg
 import glm
-from app_state import app_state
+from .app_state import app_state
 
 class BaseUIElem:
     """Base UI elem that can be placed inside a button."""
