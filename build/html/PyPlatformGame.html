@@ -1,0 +1,1054 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>PyPlatformGame package &#8212; PyPlatformGame 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="PyPlatformGame" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="pyplatformgame-package">
+<h1>PyPlatformGame package<a class="headerlink" href="#pyplatformgame-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-PyPlatformGame.app_state">
+<span id="pyplatformgame-app-state-module"></span><h2>PyPlatformGame.app_state module<a class="headerlink" href="#module-PyPlatformGame.app_state" title="Permalink to this heading">¶</a></h2>
+<p>More convinient processing of global state.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.AppState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.app_state.</span></span><span class="sig-name descname"><span class="pre">AppState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RTargetManager</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ShaderManager</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextureManager</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MeshManager</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.app_state.AppState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>App state information.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.AppState.mesh_manager">
+<span class="sig-name descname"><span class="pre">mesh_manager</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">MeshManager</span></em><a class="headerlink" href="#PyPlatformGame.app_state.AppState.mesh_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.AppState.rt_manager">
+<span class="sig-name descname"><span class="pre">rt_manager</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">RTargetManager</span></em><a class="headerlink" href="#PyPlatformGame.app_state.AppState.rt_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.AppState.screen_res">
+<span class="sig-name descname"><span class="pre">screen_res</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#PyPlatformGame.app_state.AppState.screen_res" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.AppState.shader_manager">
+<span class="sig-name descname"><span class="pre">shader_manager</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ShaderManager</span></em><a class="headerlink" href="#PyPlatformGame.app_state.AppState.shader_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.AppState.texture_manager">
+<span class="sig-name descname"><span class="pre">texture_manager</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TextureManager</span></em><a class="headerlink" href="#PyPlatformGame.app_state.AppState.texture_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.app_state">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.app_state.</span></span><span class="sig-name descname"><span class="pre">app_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#PyPlatformGame.app_state.AppState" title="PyPlatformGame.app_state.AppState"><span class="pre">AppState</span></a></span></span><a class="headerlink" href="#PyPlatformGame.app_state.app_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get app state.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.delete_app_state">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.app_state.</span></span><span class="sig-name descname"><span class="pre">delete_app_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.app_state.delete_app_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete app state.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.app_state.init_app_state">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.app_state.</span></span><span class="sig-name descname"><span class="pre">init_app_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shaders_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textures_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meshes_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.app_state.init_app_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Init app state.</p>
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.audio_test">
+<span id="pyplatformgame-audio-test-module"></span><h2>PyPlatformGame.audio_test module<a class="headerlink" href="#module-PyPlatformGame.audio_test" title="Permalink to this heading">¶</a></h2>
+<p>Audio test is responsible for testing AudioManager.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.audio_test.AudioManagerTest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.audio_test.</span></span><span class="sig-name descname"><span class="pre">AudioManagerTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audio_test.AudioManagerTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<p>Test class for validating AudioManager.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audio_test.AudioManagerTest.setup_audiomanager">
+<span class="sig-name descname"><span class="pre">setup_audiomanager</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audio_test.AudioManagerTest.setup_audiomanager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setuping audiomanager before testing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audio_test.AudioManagerTest.test_handlers">
+<span class="sig-name descname"><span class="pre">test_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audio_test.AudioManagerTest.test_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checking work with handles of sounds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audio_test.AudioManagerTest.test_loading">
+<span class="sig-name descname"><span class="pre">test_loading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audio_test.AudioManagerTest.test_loading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checking loading sounds from a test folder.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audio_test.AudioManagerTest.test_playing">
+<span class="sig-name descname"><span class="pre">test_playing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audio_test.AudioManagerTest.test_playing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checking sound playing.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.audiomanager">
+<span id="pyplatformgame-audiomanager-module"></span><h2>PyPlatformGame.audiomanager module<a class="headerlink" href="#module-PyPlatformGame.audiomanager" title="Permalink to this heading">¶</a></h2>
+<p>Module is rensposible for loading, playing sounds and music.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.audiomanager.</span></span><span class="sig-name descname"><span class="pre">AudioManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>AudioManager class for loading, managing and playing sounds and musics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sounds_folder_dir</strong> – path to folder which contains all sounds</p></li>
+<li><p><strong>music_folder_dir</strong> – path to folder which contains all musics</p></li>
+<li><p><strong>sound</strong> – array with mixer.Sounds</p></li>
+<li><p><strong>sounds_handles</strong> – dictionary with mapping between sounds handles and mixer.Sounds</p></li>
+<li><p><strong>sound_volume</strong> – volume factor which applyies to every sound effect</p></li>
+<li><p><strong>sounds_volumes</strong> – array with sound volume for every sound effect</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.SOUNDS_EXTENSIONS">
+<span class="sig-name descname"><span class="pre">SOUNDS_EXTENSIONS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['.wav',</span> <span class="pre">'.mp3']</span></em><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.SOUNDS_EXTENSIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.get_background_volume">
+<span class="sig-name descname"><span class="pre">get_background_volume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.get_background_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get background music volume.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>background music volume</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.get_loaded_sounds">
+<span class="sig-name descname"><span class="pre">get_loaded_sounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.get_loaded_sounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dictionary  of loaded sounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict &lt;sound_filename, handle&gt; of loaded sounds</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.get_sound_handle">
+<span class="sig-name descname"><span class="pre">get_sound_handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.get_sound_handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a sound handle based on a filename, based on preloaded sounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> – sound filename</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>In a case when there’s no any sound with requested filename, the methods Return -1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.get_sounds_volume">
+<span class="sig-name descname"><span class="pre">get_sounds_volume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.get_sounds_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get sounds volume.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>sounds volume</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.init_sounds">
+<span class="sig-name descname"><span class="pre">init_sounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sounds_folder_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">music_folder_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.init_sounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize AudioManager with passing paths to a folder with sounds and music effects.</p>
+<p>It runs loads_sounds automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sounds_folder_dir</strong> – path to folder which contains all sounds</p></li>
+<li><p><strong>music_folder_dir</strong> – path to folder which contains all musics</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.load_sounds">
+<span class="sig-name descname"><span class="pre">load_sounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.load_sounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load every sound file from sounds_folder_dir which was defined in constructor.</p>
+<p>It support .wav and .mp4 file formats.
+For every sound algorithm allocate a unique handle,
+which can be requested by get_sound_handle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.play_background_music">
+<span class="sig-name descname"><span class="pre">play_background_music</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.play_background_music" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will load a music file object and prepare it for playback.</p>
+<p>If a music stream is already playing it will be stopped.
+This does not start the music playing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – music filename</p></li>
+<li><p><strong>loop</strong> – number of iterations for playing. -1 = endlessly</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.play_sound">
+<span class="sig-name descname"><span class="pre">play_sound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.play_sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Play a sound based on its handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – sound handle</p></li>
+<li><p><strong>volume</strong> – sound volume</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If handle is correct, Return 1. Else in Return 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.play_sound_by_name">
+<span class="sig-name descname"><span class="pre">play_sound_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.play_sound_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Play a sound based on its filename.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – sound filename</p></li>
+<li><p><strong>volume</strong> – sound volume</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If filename is correct, Return 1. Else in Return 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.set_background_volume">
+<span class="sig-name descname"><span class="pre">set_background_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.set_background_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will change volume of playing the background music.</p>
+<p>Volume from 0 to 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>volume</strong> – music volume</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.set_sound_volume">
+<span class="sig-name descname"><span class="pre">set_sound_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.set_sound_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will change volume of a particular sound based on its handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – sound handle</p></li>
+<li><p><strong>volume</strong> – sound volume</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If handle is correct, Return 1. Else in Return 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.set_sounds_volume">
+<span class="sig-name descname"><span class="pre">set_sounds_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.set_sounds_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will change volume of all sounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>volume</strong> – music volume</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.stop_all_sounds">
+<span class="sig-name descname"><span class="pre">stop_all_sounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.stop_all_sounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop every sound.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.stop_background_music">
+<span class="sig-name descname"><span class="pre">stop_background_music</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.stop_background_music" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will stop music playing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.audiomanager.AudioManager.stop_sound">
+<span class="sig-name descname"><span class="pre">stop_sound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#PyPlatformGame.audiomanager.AudioManager.stop_sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will stop a particular sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> – sound handle</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If handle is correct, Return 1. Else in Return 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.billboard_renderer">
+<span id="pyplatformgame-billboard-renderer-module"></span><h2>PyPlatformGame.billboard_renderer module<a class="headerlink" href="#module-PyPlatformGame.billboard_renderer" title="Permalink to this heading">¶</a></h2>
+<p>Module containing debug render processor for ECS and assosiated components.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.billboard_renderer.RenderProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.billboard_renderer.</span></span><span class="sig-name descname"><span class="pre">RenderProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.billboard_renderer.RenderProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Processor</span></code></p>
+<p>Render processor for ECS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.billboard_renderer.RenderProcessor.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.billboard_renderer.RenderProcessor.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render AABB components in different colors with Pygame.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.billboard_renderer.TextureComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.billboard_renderer.</span></span><span class="sig-name descname"><span class="pre">TextureComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tex_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.billboard_renderer.TextureComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Texture component for ECS.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.billboard_renderer.TextureComponent.tex_name">
+<span class="sig-name descname"><span class="pre">tex_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#PyPlatformGame.billboard_renderer.TextureComponent.tex_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.death_manager">
+<span id="pyplatformgame-death-manager-module"></span><h2>PyPlatformGame.death_manager module<a class="headerlink" href="#module-PyPlatformGame.death_manager" title="Permalink to this heading">¶</a></h2>
+<p>Module containing entity death logic for ECS.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.death_manager.DeathProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.death_manager.</span></span><span class="sig-name descname"><span class="pre">DeathProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_death_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enemy_death_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.death_manager.DeathProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Processor</span></code></p>
+<p>Death processor for ECS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.death_manager.DeathProcessor.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.death_manager.DeathProcessor.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kill entities marked for death.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.death_manager.InvincibilityComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.death_manager.</span></span><span class="sig-name descname"><span class="pre">InvincibilityComponent</span></span><a class="headerlink" href="#PyPlatformGame.death_manager.InvincibilityComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Invincibility component for ECS.</p>
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.enemy">
+<span id="pyplatformgame-enemy-module"></span><h2>PyPlatformGame.enemy module<a class="headerlink" href="#module-PyPlatformGame.enemy" title="Permalink to this heading">¶</a></h2>
+<p>Module containing enemy logic for ECS.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.ControllerProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.enemy.</span></span><span class="sig-name descname"><span class="pre">ControllerProcessor</span></span><a class="headerlink" href="#PyPlatformGame.enemy.ControllerProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Processor</span></code></p>
+<p>Enemy controller processor for ECS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.ControllerProcessor.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.enemy.ControllerProcessor.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process enemy logic.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.SettingsComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.enemy.</span></span><span class="sig-name descname"><span class="pre">SettingsComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">vec2</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror_axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">vec2</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.enemy.SettingsComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Enemy settings component for ECS.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.SettingsComponent.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec2(</span> <span class="pre">0,</span> <span class="pre">0</span> <span class="pre">)</span></em><a class="headerlink" href="#PyPlatformGame.enemy.SettingsComponent.direction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.SettingsComponent.mirror_axis">
+<span class="sig-name descname"><span class="pre">mirror_axis</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec2(</span> <span class="pre">0,</span> <span class="pre">0</span> <span class="pre">)</span></em><a class="headerlink" href="#PyPlatformGame.enemy.SettingsComponent.mirror_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.SettingsComponent.mirror_state">
+<span class="sig-name descname"><span class="pre">mirror_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PyPlatformGame.enemy.SettingsComponent.mirror_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.SettingsComponent.mirror_time">
+<span class="sig-name descname"><span class="pre">mirror_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#PyPlatformGame.enemy.SettingsComponent.mirror_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.TimerComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.enemy.</span></span><span class="sig-name descname"><span class="pre">TimerComponent</span></span><a class="headerlink" href="#PyPlatformGame.enemy.TimerComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Enemy timer component for ECS.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.TimerComponent.is_set">
+<span class="sig-name descname"><span class="pre">is_set</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PyPlatformGame.enemy.TimerComponent.is_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.enemy.TimerComponent.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#PyPlatformGame.enemy.TimerComponent.time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.gameplay">
+<span id="pyplatformgame-gameplay-module"></span><h2>PyPlatformGame.gameplay module<a class="headerlink" href="#module-PyPlatformGame.gameplay" title="Permalink to this heading">¶</a></h2>
+<p>Module for gameplay code (level load, physics, controls).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gameplay.Gameplay">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gameplay.</span></span><span class="sig-name descname"><span class="pre">Gameplay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.gameplay.GameplayCallbacks" title="PyPlatformGame.gameplay.GameplayCallbacks"><span class="pre">GameplayCallbacks</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gameplay.Gameplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Level management, physics and player controls.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gameplay.Gameplay.process_input">
+<span class="sig-name descname"><span class="pre">process_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gameplay.Gameplay.process_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process inputs and pass to ECS.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gameplay.Gameplay.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gameplay.Gameplay.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update for all ECS systems.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gameplay.GameplayCallbacks">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gameplay.</span></span><span class="sig-name descname"><span class="pre">GameplayCallbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">billboard_render</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_death</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enemy_death</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gameplay.GameplayCallbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Callbacks for various gameplay events.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gameplay.GameplayCallbacks.billboard_render">
+<span class="sig-name descname"><span class="pre">billboard_render</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span></em><a class="headerlink" href="#PyPlatformGame.gameplay.GameplayCallbacks.billboard_render" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gameplay.GameplayCallbacks.enemy_death">
+<span class="sig-name descname"><span class="pre">enemy_death</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span></em><a class="headerlink" href="#PyPlatformGame.gameplay.GameplayCallbacks.enemy_death" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gameplay.GameplayCallbacks.player_death">
+<span class="sig-name descname"><span class="pre">player_death</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span></em><a class="headerlink" href="#PyPlatformGame.gameplay.GameplayCallbacks.player_death" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.gui">
+<span id="pyplatformgame-gui-module"></span><h2>PyPlatformGame.gui module<a class="headerlink" href="#module-PyPlatformGame.gui" title="Permalink to this heading">¶</a></h2>
+<p>GUI elements and related stuff.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.BaseUIElem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gui.</span></span><span class="sig-name descname"><span class="pre">BaseUIElem</span></span><a class="headerlink" href="#PyPlatformGame.gui.BaseUIElem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base UI elem that can be placed inside a button.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.BaseUIElem.get_relative_size">
+<span class="sig-name descname"><span class="pre">get_relative_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#PyPlatformGame.gui.BaseUIElem.get_relative_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get size of the rectangle as fraction of screen size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.BaseUIElem.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.BaseUIElem.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render element at position.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.Button">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gui.</span></span><span class="sig-name descname"><span class="pre">Button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inner_elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.gui.BaseUIElem" title="PyPlatformGame.gui.BaseUIElem"><span class="pre">BaseUIElem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_descr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.gui.ButtonDescr" title="PyPlatformGame.gui.ButtonDescr"><span class="pre">ButtonDescr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.Button" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>GUI button. Supports both rendering and user interaction.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.Button.mouse_over">
+<span class="sig-name descname"><span class="pre">mouse_over</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#PyPlatformGame.gui.Button.mouse_over" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if mouse is over button.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.Button.process_event">
+<span class="sig-name descname"><span class="pre">process_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.Button.process_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process event to check if it is mouse click on button.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.Button.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">background_tex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.gui.Button.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render button.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.ButtonDescr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gui.</span></span><span class="sig-name descname"><span class="pre">ButtonDescr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.003</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corner_r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.008</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0.7,</span> <span class="pre">0.7,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressed_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0.5,</span> <span class="pre">0.5,</span> <span class="pre">0.5)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.ButtonDescr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Button description.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.ButtonDescr.background_color">
+<span class="sig-name descname"><span class="pre">background_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.7,</span> <span class="pre">0.7,</span> <span class="pre">0.7)</span></em><a class="headerlink" href="#PyPlatformGame.gui.ButtonDescr.background_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.ButtonDescr.border_size">
+<span class="sig-name descname"><span class="pre">border_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.01</span></em><a class="headerlink" href="#PyPlatformGame.gui.ButtonDescr.border_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.ButtonDescr.corner_r">
+<span class="sig-name descname"><span class="pre">corner_r</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.008</span></em><a class="headerlink" href="#PyPlatformGame.gui.ButtonDescr.corner_r" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.ButtonDescr.frame_color">
+<span class="sig-name descname"><span class="pre">frame_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.3)</span></em><a class="headerlink" href="#PyPlatformGame.gui.ButtonDescr.frame_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.ButtonDescr.frame_size">
+<span class="sig-name descname"><span class="pre">frame_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.003</span></em><a class="headerlink" href="#PyPlatformGame.gui.ButtonDescr.frame_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.ButtonDescr.pressed_color">
+<span class="sig-name descname"><span class="pre">pressed_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.5,</span> <span class="pre">0.5,</span> <span class="pre">0.5)</span></em><a class="headerlink" href="#PyPlatformGame.gui.ButtonDescr.pressed_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.Slider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gui.</span></span><span class="sig-name descname"><span class="pre">Slider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_descr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.gui.SliderDescr" title="PyPlatformGame.gui.SliderDescr"><span class="pre">SliderDescr</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.Slider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>GUI slider element. Supports both rendering and user interaction.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.Slider.process_input">
+<span class="sig-name descname"><span class="pre">process_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.gui.Slider.process_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update slider if user interacts with it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.Slider.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">background_tex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.gui.Slider.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render slider.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.SliderDescr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gui.</span></span><span class="sig-name descname"><span class="pre">SliderDescr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.003</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corner_r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.008</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0.7,</span> <span class="pre">0.7,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0.5,</span> <span class="pre">0.05)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_fract</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(0.25,</span> <span class="pre">3.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.SliderDescr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>GUI slider description.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.SliderDescr.background_color">
+<span class="sig-name descname"><span class="pre">background_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.7,</span> <span class="pre">0.7,</span> <span class="pre">0.7)</span></em><a class="headerlink" href="#PyPlatformGame.gui.SliderDescr.background_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.SliderDescr.corner_r">
+<span class="sig-name descname"><span class="pre">corner_r</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.008</span></em><a class="headerlink" href="#PyPlatformGame.gui.SliderDescr.corner_r" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.SliderDescr.frame_color">
+<span class="sig-name descname"><span class="pre">frame_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.3)</span></em><a class="headerlink" href="#PyPlatformGame.gui.SliderDescr.frame_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.SliderDescr.frame_size">
+<span class="sig-name descname"><span class="pre">frame_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.003</span></em><a class="headerlink" href="#PyPlatformGame.gui.SliderDescr.frame_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.SliderDescr.inner_fract">
+<span class="sig-name descname"><span class="pre">inner_fract</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.25,</span> <span class="pre">3.0)</span></em><a class="headerlink" href="#PyPlatformGame.gui.SliderDescr.inner_fract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.SliderDescr.size">
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0.5,</span> <span class="pre">0.05)</span></em><a class="headerlink" href="#PyPlatformGame.gui.SliderDescr.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.TextRect">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gui.</span></span><span class="sig-name descname"><span class="pre">TextRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255,</span> <span class="pre">255)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.TextRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PyPlatformGame.gui.BaseUIElem" title="PyPlatformGame.gui.BaseUIElem"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseUIElem</span></code></a></p>
+<p>Rectangle with specified text.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.TextRect.get_relative_size">
+<span class="sig-name descname"><span class="pre">get_relative_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#PyPlatformGame.gui.TextRect.get_relative_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get size of the rectangle as fraction of screen size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.TextRect.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.gui.TextRect.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render rectangle with center at specified position.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.TexturedRect">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.gui.</span></span><span class="sig-name descname"><span class="pre">TexturedRect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tex_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.gui.TexturedRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PyPlatformGame.gui.BaseUIElem" title="PyPlatformGame.gui.BaseUIElem"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseUIElem</span></code></a></p>
+<p>Rectangle with specified texture.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.TexturedRect.get_relative_size">
+<span class="sig-name descname"><span class="pre">get_relative_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#PyPlatformGame.gui.TexturedRect.get_relative_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get size of the rectangle as fraction of screen size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.gui.TexturedRect.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.gui.TexturedRect.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render rectangle with center at specified position.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.input_data">
+<span id="pyplatformgame-input-data-module"></span><h2>PyPlatformGame.input_data module<a class="headerlink" href="#module-PyPlatformGame.input_data" title="Permalink to this heading">¶</a></h2>
+<p>Module containing input components for ECS.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.input_data.InputComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.input_data.</span></span><span class="sig-name descname"><span class="pre">InputComponent</span></span><a class="headerlink" href="#PyPlatformGame.input_data.InputComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Input component for ECS.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.input_data.InputComponent.attack">
+<span class="sig-name descname"><span class="pre">attack</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#PyPlatformGame.input_data.InputComponent.attack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.input_data.InputComponent.do_jump">
+<span class="sig-name descname"><span class="pre">do_jump</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PyPlatformGame.input_data.InputComponent.do_jump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.input_data.InputComponent.move_direction">
+<span class="sig-name descname"><span class="pre">move_direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#PyPlatformGame.input_data.InputComponent.move_direction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.input_data.SusceptibleToInputComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.input_data.</span></span><span class="sig-name descname"><span class="pre">SusceptibleToInputComponent</span></span><a class="headerlink" href="#PyPlatformGame.input_data.SusceptibleToInputComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Component for querying entities susceptible to input in ECS.</p>
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.player">
+<span id="pyplatformgame-player-module"></span><h2>PyPlatformGame.player module<a class="headerlink" href="#module-PyPlatformGame.player" title="Permalink to this heading">¶</a></h2>
+<p>Module containing player logic for ECS.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.player.DisjointedController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.player.</span></span><span class="sig-name descname"><span class="pre">DisjointedController</span></span><a class="headerlink" href="#PyPlatformGame.player.DisjointedController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Processor</span></code></p>
+<p>Disjointed hurtbox processor for ECS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.player.DisjointedController.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.player.DisjointedController.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process disjointed hurtboxes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.player.DisjointedParamsComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.player.</span></span><span class="sig-name descname"><span class="pre">DisjointedParamsComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.player.DisjointedParamsComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Parameters for disjointed hurtbox component for ECS.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.player.DisjointedParamsComponent.host">
+<span class="sig-name descname"><span class="pre">host</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#PyPlatformGame.player.DisjointedParamsComponent.host" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.player.DisjointedParamsComponent.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#PyPlatformGame.player.DisjointedParamsComponent.time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.player.InputProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.player.</span></span><span class="sig-name descname"><span class="pre">InputProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_entity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.player.InputProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Processor</span></code></p>
+<p>Player input processor for ECS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.player.InputProcessor.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.player.InputProcessor.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process player input.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.player.PhysicsProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.player.</span></span><span class="sig-name descname"><span class="pre">PhysicsProcessor</span></span><a class="headerlink" href="#PyPlatformGame.player.PhysicsProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Processor</span></code></p>
+<p>Player physics processor for ECS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.player.PhysicsProcessor.process">
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.player.PhysicsProcessor.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process physics for player entities.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.player.StateComponent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.player.</span></span><span class="sig-name descname"><span class="pre">StateComponent</span></span><a class="headerlink" href="#PyPlatformGame.player.StateComponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Player state component for ECS.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.player.StateComponent.face_right">
+<span class="sig-name descname"><span class="pre">face_right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PyPlatformGame.player.StateComponent.face_right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.player.StateComponent.has_disjointed">
+<span class="sig-name descname"><span class="pre">has_disjointed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#PyPlatformGame.player.StateComponent.has_disjointed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.renderer">
+<span id="pyplatformgame-renderer-module"></span><h2>PyPlatformGame.renderer module<a class="headerlink" href="#module-PyPlatformGame.renderer" title="Permalink to this heading">¶</a></h2>
+<p>Main draw call.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.renderer.draw">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.renderer.</span></span><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.scene.Scene" title="PyPlatformGame.scene.Scene"><span class="pre">Scene</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.ui_descr.UI" title="PyPlatformGame.ui_descr.UI"><span class="pre">UI</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.scene.Camera" title="PyPlatformGame.scene.Camera"><span class="pre">Camera</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.renderer.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render current scene and interface.</p>
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.scene">
+<span id="pyplatformgame-scene-module"></span><h2>PyPlatformGame.scene module<a class="headerlink" href="#module-PyPlatformGame.scene" title="Permalink to this heading">¶</a></h2>
+<p>Scene data storage and processing.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Billboard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.scene.</span></span><span class="sig-name descname"><span class="pre">Billboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tex_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.scene.Billboard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Billboard description.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Billboard.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec2</span></em><a class="headerlink" href="#PyPlatformGame.scene.Billboard.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Billboard.size">
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec2</span></em><a class="headerlink" href="#PyPlatformGame.scene.Billboard.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Billboard.tex_name">
+<span class="sig-name descname"><span class="pre">tex_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#PyPlatformGame.scene.Billboard.tex_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Camera">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.scene.</span></span><span class="sig-name descname"><span class="pre">Camera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.scene.Camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Camera description.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Camera.dir">
+<span class="sig-name descname"><span class="pre">dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec3</span></em><a class="headerlink" href="#PyPlatformGame.scene.Camera.dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Camera.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec3</span></em><a class="headerlink" href="#PyPlatformGame.scene.Camera.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Light">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.scene.</span></span><span class="sig-name descname"><span class="pre">Light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.scene.Light" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Light description.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Light.dir">
+<span class="sig-name descname"><span class="pre">dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec3</span></em><a class="headerlink" href="#PyPlatformGame.scene.Light.dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Light.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec3</span></em><a class="headerlink" href="#PyPlatformGame.scene.Light.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Scene">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.scene.</span></span><span class="sig-name descname"><span class="pre">Scene</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.scene.Scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Scene storage and processing.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Scene.add_bilboard">
+<span class="sig-name descname"><span class="pre">add_bilboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.scene.Scene.add_bilboard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add billboard object to be rendered on current frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Scene.before_render">
+<span class="sig-name descname"><span class="pre">before_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#PyPlatformGame.scene.Scene.before_render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare for rendering.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Scene.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#PyPlatformGame.scene.Camera" title="PyPlatformGame.scene.Camera"><span class="pre">Camera</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shadow_tex_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.scene.Scene.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render full scene for main pass.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.Scene.render_to_shadow">
+<span class="sig-name descname"><span class="pre">render_to_shadow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.scene.Scene.render_to_shadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render all needed parts to shadow map texture.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.SceneElem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.scene.</span></span><span class="sig-name descname"><span class="pre">SceneElem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tex_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_rotation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vec3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.scene.SceneElem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Scene element description.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.SceneElem.mesh_name">
+<span class="sig-name descname"><span class="pre">mesh_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#PyPlatformGame.scene.SceneElem.mesh_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.SceneElem.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec3</span></em><a class="headerlink" href="#PyPlatformGame.scene.SceneElem.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.SceneElem.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">vec3</span></em><a class="headerlink" href="#PyPlatformGame.scene.SceneElem.scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.SceneElem.tex_name">
+<span class="sig-name descname"><span class="pre">tex_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#PyPlatformGame.scene.SceneElem.tex_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.scene.SceneElem.y_rotation">
+<span class="sig-name descname"><span class="pre">y_rotation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#PyPlatformGame.scene.SceneElem.y_rotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame.ui_descr">
+<span id="pyplatformgame-ui-descr-module"></span><h2>PyPlatformGame.ui_descr module<a class="headerlink" href="#module-PyPlatformGame.ui_descr" title="Permalink to this heading">¶</a></h2>
+<p>Descriptions for all ui screens in game.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.UI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyPlatformGame.ui_descr.</span></span><span class="sig-name descname"><span class="pre">UI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buttons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#PyPlatformGame.gui.Button" title="PyPlatformGame.gui.Button"><span class="pre">Button</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sliders</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#PyPlatformGame.gui.Slider" title="PyPlatformGame.gui.Slider"><span class="pre">Slider</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">others</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#PyPlatformGame.gui.BaseUIElem" title="PyPlatformGame.gui.BaseUIElem"><span class="pre">BaseUIElem</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyPlatformGame.ui_descr.UI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Storage for all UI elements.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.UI.buttons">
+<span class="sig-name descname"><span class="pre">buttons</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#PyPlatformGame.gui.Button" title="PyPlatformGame.gui.Button"><span class="pre">Button</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#PyPlatformGame.ui_descr.UI.buttons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.UI.others">
+<span class="sig-name descname"><span class="pre">others</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#PyPlatformGame.gui.BaseUIElem" title="PyPlatformGame.gui.BaseUIElem"><span class="pre">BaseUIElem</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#PyPlatformGame.ui_descr.UI.others" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.UI.sliders">
+<span class="sig-name descname"><span class="pre">sliders</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#PyPlatformGame.gui.Slider" title="PyPlatformGame.gui.Slider"><span class="pre">Slider</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#PyPlatformGame.ui_descr.UI.sliders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.game_ui">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.ui_descr.</span></span><span class="sig-name descname"><span class="pre">game_ui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#PyPlatformGame.ui_descr.UI" title="PyPlatformGame.ui_descr.UI"><span class="pre">UI</span></a></span></span><a class="headerlink" href="#PyPlatformGame.ui_descr.game_ui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create in-game ui.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.menu_ui">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.ui_descr.</span></span><span class="sig-name descname"><span class="pre">menu_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">play_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exit_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">music_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sound_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang_callbacks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#PyPlatformGame.ui_descr.UI" title="PyPlatformGame.ui_descr.UI"><span class="pre">UI</span></a></span></span><a class="headerlink" href="#PyPlatformGame.ui_descr.menu_ui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create ui for main menu.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.pause_ui">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.ui_descr.</span></span><span class="sig-name descname"><span class="pre">pause_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continue_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">music_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sound_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#PyPlatformGame.ui_descr.UI" title="PyPlatformGame.ui_descr.UI"><span class="pre">UI</span></a></span></span><a class="headerlink" href="#PyPlatformGame.ui_descr.pause_ui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create ui for pause menu.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PyPlatformGame.ui_descr.results_ui">
+<span class="sig-prename descclassname"><span class="pre">PyPlatformGame.ui_descr.</span></span><span class="sig-name descname"><span class="pre">results_ui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">restart_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">killed_enemy_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#PyPlatformGame.ui_descr.UI" title="PyPlatformGame.ui_descr.UI"><span class="pre">UI</span></a></span></span><a class="headerlink" href="#PyPlatformGame.ui_descr.results_ui" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create ui for pause menu.</p>
+</dd></dl>
+
+</section>
+<section id="module-PyPlatformGame">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-PyPlatformGame" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PyPlatformGame</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">PyPlatformGame</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyPlatformGame package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">PyPlatformGame</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">PyPlatformGame</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Anton N., Egor F., Michael D..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/PyPlatformGame.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

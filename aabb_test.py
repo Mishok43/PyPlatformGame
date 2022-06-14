@@ -2,8 +2,8 @@
 
 import unittest
 import glm
-from physics import aabb
-from physics import velocity
+from .physics import aabb
+from .physics import velocity
 
 
 
