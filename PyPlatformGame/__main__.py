@@ -37,10 +37,16 @@ def billboard_render(tex, pos, size):
     scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
 
 def enemy_death_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(kill_sound_handle)
+
     global killed_enemy_count
     killed_enemy_count += 1
 
 def player_death_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(die_sound_handle)
+
     global cur_state
     cur_state = RESULTS
 
@@ -170,7 +176,8 @@ sound_path = os.path.join(base_dir, 'assets', 'sounds')
 audiomanager.init_sounds(sound_path, sound_path)
 audiomanager.play_background_music("soundtrack.mp3")
 click_sound_handle = AudioManager().get_sound_handle("click_button.wav")
-
+die_sound_handle = AudioManager().get_sound_handle("die.wav")
+kill_sound_handle = AudioManager().get_sound_handle("kill.wav")
 while True:
     if cur_state != prev_state:
         if cur_state == MENU:
