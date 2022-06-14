@@ -46,6 +46,7 @@ class Gameplay:
 
         with open(level_filename, encoding='utf-8') as file:
             level = json.load(file)
+
             player_descr = level["player"]
             self.world.create_entity(aabb.AABBComponent(
                         pos=player_descr["pos"], dim=player_descr["dim"]),
@@ -57,6 +58,7 @@ class Gameplay:
                     input_data.SusceptibleToInputComponent(),
                     player.StateComponent(),
                     camera.FollowCameraComponent())
+
             for enemy_descr in level["enemies"]:
                 motion = enemy_descr["motion"]
                 self.world.create_entity(
@@ -70,6 +72,7 @@ class Gameplay:
                         direction=motion["direction"],
                         mirror_time=motion["mirror_time"],
                         mirror_axis=motion["mirror_axis"]))
+
             for platform in level["platforms"]:
                 self.world.create_entity(
                     aabb.AABBComponent(pos=platform["pos"],
@@ -77,6 +80,14 @@ class Gameplay:
                     billy.TextureComponent(tex_name=platform["texture"]),
                     billy.DrawOrderComponent(order=0),
                     collision.PassiveCollisionComponent())
+
+            for death_box in level["death_boxes"]:
+                self.world.create_entity(
+                    aabb.AABBComponent(pos=death_box["pos"],
+                        dim=death_box["dim"]),
+                    collision.ActiveCollisionComponent(),
+                    collision.HurtComponent())
+
     def process_input(self):
         """Process inputs and pass to ECS."""
         input_component = input_data.InputComponent()
