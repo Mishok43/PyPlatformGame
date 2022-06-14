@@ -104,11 +104,13 @@ class StateComponent:
 
     face_right: bool
     has_disjointed: bool
+    attack_held: bool
 
     def __init__(self):
         """Initialize player state component."""
         self.face_right = True
         self.has_disjointed = False
+        self.attack_held = False
 
 
 class InputProcessor(esper.Processor):
@@ -153,12 +155,16 @@ class InputProcessor(esper.Processor):
             vel_new = velocity.VelocityComponent(direction=glm.vec2(vel_h, vel_v))
             self.world.add_component(ent, vel_new)
 
-            if input_component.attack and not state.has_disjointed:
+            if not input_component.attack:
+                state.attack_held = False
+            elif not state.has_disjointed and not state.attack_held:
                 state.has_disjointed = True
+                state.attack_held = True
                 self.world.add_component(ent, state)
 
-                self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(0.05, 0.05)),
+                self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(0.07, 0.07)),
                         billy.TextureComponent(tex_name="test.png"),
+                        billy.DrawOrderComponent(order=3),
                         collision.ActiveCollisionComponent(),
                         collision.HurtComponent(),
-                        DisjointedParamsComponent(time=0.1, host=ent))
+                        DisjointedParamsComponent(time=0.2, host=ent))

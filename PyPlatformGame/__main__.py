@@ -32,9 +32,12 @@ should_stop = False
 scene = None
 gameplay = None
 
-def billboard_render(tex, pos, size):
+def billboard_render(tex, pos, size, order = 0):
     h_w = app_state().screen_res[1] / app_state().screen_res[0]
     scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
+
+def camera_callback(pos):
+    pass
 
 def enemy_death_callback():
     if click_sound_handle != -1:
@@ -74,7 +77,7 @@ def menu_callback():
     killed_enemy_count = 0
     cur_state = MENU
     gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+            GameplayCallbacks(camera_callback, billboard_render, player_death_callback, enemy_death_callback))
 
 def restart_callback():
     global cur_state
@@ -83,7 +86,7 @@ def restart_callback():
     killed_enemy_count = 0
     cur_state = GAME
     gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+            GameplayCallbacks(camera_callback, billboard_render, player_death_callback, enemy_death_callback))
 
 def lang_callback_ru():
     global prev_state
@@ -137,7 +140,7 @@ def process_keyboard():
         app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
         scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
         gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+            GameplayCallbacks(camera_callback, billboard_render, player_death_callback, enemy_death_callback))
     elif keys[pg.K_ESCAPE]:
         cur_state = PAUSE
 
@@ -165,8 +168,11 @@ init_app_state((1280, 720),
             os.path.join(base_dir, 'shaders'),
             os.path.join(base_dir, 'assets', 'textures'),
             os.path.join(base_dir, 'assets', 'meshes'))
-gameplay = gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+gameplay = Gameplay(
+    os.path.join(base_dir, 'assets', 'level.json'),
+    GameplayCallbacks(
+        camera_callback, billboard_render, player_death_callback, enemy_death_callback)
+)
 scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
 clock = pg.time.Clock()
 FPS = 60
