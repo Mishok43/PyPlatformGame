@@ -1,0 +1,5 @@
+recursive-include po *.po
+recursive-include tests *
+recursive-include docs *
+include *.png
+include *.md

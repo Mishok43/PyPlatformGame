@@ -84,7 +84,7 @@ def task_wheel():
 def task_app():
     """Run application."""
     return {
-            'actions': ['python -m AppBase'],
+            'actions': ['python -m PyPlatformGame'],
             'task_dep': ['mo'],
            }
 
