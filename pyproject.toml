@@ -1,0 +1,3 @@
+[build-system]
+requires = ["Sphinx", "build", "coverage", "doit", "pylint", "pydocstyle", "pygame", "pyglm", "numpy", "pyopengl", "esper", "pywavefront"]
+build-backend = "setuptools.build_meta"

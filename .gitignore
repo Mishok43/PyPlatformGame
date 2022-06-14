@@ -5,3 +5,5 @@ build
 PyPlatformGame/en
 PyPlatformGame/ru
 *.pot
+dist
+*.egg-info
