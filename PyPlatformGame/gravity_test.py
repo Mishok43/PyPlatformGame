@@ -11,7 +11,7 @@ from .physics import gravity
 
 
 class GravityTest(unittest.TestCase):
-    """Test class for validating velocity."""
+    """Test class for validating gravity."""
 
     def setup_world(self):
         """Setuping world before testing."""
