@@ -33,7 +33,7 @@ should_stop = False
 scene = None
 gameplay = None
 
-def billboard_render(tex, pos, size):
+def billboard_render(tex, pos, size, order = 0):
     h_w = app_state().screen_res[1] / app_state().screen_res[0]
     scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
 

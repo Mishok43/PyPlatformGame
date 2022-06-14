@@ -1,4 +1,4 @@
-"""Module containing debug render processor for ECS and assosiated components."""
+"""Module containing billboard render processor for ECS and assosiated components."""
 
 
 from dataclasses import dataclass
@@ -7,6 +7,16 @@ from typing import Callable
 import esper
 
 from .physics import aabb
+
+
+@dataclass
+class DrawOrderComponent:
+    """Draw order component."""
+
+    order: int
+
+    def __init__(self, order: int):
+        self.order = order
 
 
 @dataclass
@@ -21,14 +31,14 @@ class TextureComponent:
 
 
 class RenderProcessor(esper.Processor):
-    """Render processor for ECS."""
+    """Billboard render processor for ECS."""
 
     def __init__(self, callback: Callable):
-        """Initialize debug renderer."""
+        """Initialize billboard renderer."""
         self.callback = callback
 
     def process(self, *_):
-        """Render AABB components in different colors with Pygame."""
-
-        for _, (box, tex) in self.world.get_components(aabb.AABBComponent, TextureComponent):
-            self.callback(tex.tex_name, box.pos, box.dim)
+        """Feed AABBs to the renderer with appropriate parameters."""
+        for _, (box, tex, draw) in self.world.get_components(
+                aabb.AABBComponent, TextureComponent, DrawOrderComponent):
+            self.callback(tex.tex_name, box.pos, box.dim, draw.order)

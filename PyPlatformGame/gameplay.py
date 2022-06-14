@@ -50,6 +50,7 @@ class Gameplay:
             self.world.create_entity(aabb.AABBComponent(
                         pos=player_descr["pos"], dim=player_descr["dim"]),
                     billy.TextureComponent(tex_name=player_descr["texture"]),
+                    billy.DrawOrderComponent(order=2),
                     collision.ActiveCollisionComponent(),
                     velocity.VelocityComponent(direction=(0, 0)),
                     gravity.SusceptibleToGravityComponent(),
@@ -61,6 +62,7 @@ class Gameplay:
                 self.world.create_entity(
                     aabb.AABBComponent(pos=enemy_descr["pos"], dim=enemy_descr["dim"]),
                     billy.TextureComponent(tex_name=enemy_descr["texture"]),
+                    billy.DrawOrderComponent(order=1),
                     collision.ActiveCollisionComponent(),
                     collision.HurtComponent(),
                     enemy.TimerComponent(),
@@ -73,6 +75,7 @@ class Gameplay:
                     aabb.AABBComponent(pos=platform["pos"],
                         dim=platform["dim"]),
                     billy.TextureComponent(tex_name=platform["texture"]),
+                    billy.DrawOrderComponent(order=0),
                     collision.PassiveCollisionComponent())
     def process_input(self):
         """Process inputs and pass to ECS."""
