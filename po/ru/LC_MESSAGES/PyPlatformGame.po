@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-14 01:45+0300\n"
+"POT-Creation-Date: 2022-06-14 12:49+0300\n"
 "PO-Revision-Date: 2022-06-14 01:23+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,59 +19,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.1\n"
 
-#: ui_descr.py:27
+#: PyPlatformGame/ui_descr.py:27
 msgid "Play"
 msgstr "Играть"
 
-#: ui_descr.py:29
+#: PyPlatformGame/ui_descr.py:29
 msgid "Exit"
 msgstr "Выйти"
 
-#: ui_descr.py:31
+#: PyPlatformGame/ui_descr.py:31
 msgid "Ru"
 msgstr "Рус"
 
-#: ui_descr.py:33
+#: PyPlatformGame/ui_descr.py:33
 msgid "En"
 msgstr "Англ"
 
-#: ui_descr.py:41
+#: PyPlatformGame/ui_descr.py:41
 msgid "GAME"
 msgstr "ИГРА"
 
-#: ui_descr.py:42
+#: PyPlatformGame/ui_descr.py:42
 msgid "Language"
 msgstr "Язык"
 
-#: ui_descr.py:43 ui_descr.py:68
+#: PyPlatformGame/ui_descr.py:43 PyPlatformGame/ui_descr.py:68
 msgid "Music"
 msgstr "Музыка"
 
-#: ui_descr.py:44 ui_descr.py:69
+#: PyPlatformGame/ui_descr.py:44 PyPlatformGame/ui_descr.py:69
 msgid "Sounds"
 msgstr "Звуки"
 
-#: ui_descr.py:57
+#: PyPlatformGame/ui_descr.py:57
 msgid "Continue"
 msgstr "Продолжить"
 
-#: ui_descr.py:59 ui_descr.py:82
+#: PyPlatformGame/ui_descr.py:59 PyPlatformGame/ui_descr.py:82
 msgid "Main menu"
 msgstr "Главное меню"
 
-#: ui_descr.py:67
+#: PyPlatformGame/ui_descr.py:67
 msgid "Loudness"
 msgstr "Громкость"
 
-#: ui_descr.py:80
+#: PyPlatformGame/ui_descr.py:80
 msgid "Restart"
 msgstr "Перезапустить"
 
-#: ui_descr.py:87
+#: PyPlatformGame/ui_descr.py:87
 msgid "YOU LOST!!!"
 msgstr "ПОРАЖЕНИЕ!!!"
 
-#: ui_descr.py:88
+#: PyPlatformGame/ui_descr.py:88
 msgid "ENEMIES KILLED: {}"
 msgstr "ВРАГОВ УБИТО: {}"
 
