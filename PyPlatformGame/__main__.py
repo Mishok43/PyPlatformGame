@@ -63,7 +63,7 @@ def menu_callback():
     killed_enemy_count = 0
     cur_state = MENU
     gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+            GameplayCallbacks(camera_callback, billboard_render, player_death_callback, enemy_death_callback))
 
 def restart_callback():
     global cur_state
@@ -72,7 +72,7 @@ def restart_callback():
     killed_enemy_count = 0
     cur_state = GAME
     gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+            GameplayCallbacks(camera_callback, billboard_render, player_death_callback, enemy_death_callback))
 
 def lang_callback_ru():
     global prev_state
@@ -126,7 +126,7 @@ def process_keyboard():
         app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
         scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
         gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+            GameplayCallbacks(camera_callback, billboard_render, player_death_callback, enemy_death_callback))
     elif keys[pg.K_ESCAPE]:
         cur_state = PAUSE
 
