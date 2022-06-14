@@ -1,27 +1,19 @@
-"""AudioManager is rensposible for loading, playing sounds and music."""
+"""Module is rensposible for loading, playing sounds and music."""
 
 import os
 from pygame import mixer
-from singleton import Singleton
+from .singleton import Singleton
 
 class AudioManager(metaclass=Singleton):
     """
     AudioManager class for loading, managing and playing sounds and musics.
 
-    Attributes
-    ----------
-    sounds_folder_dir : str
-        path to folder which contains all sounds
-    music_folder_dir : str
-        path to folder which contains all musics
-    sound : list
-        array with mixer.Sounds
-    sounds_handles : dict
-        dictionary with mapping between sounds handles and mixer.Sounds
-    sound_volume: float
-        volume factor which applyies to every sound effect
-    sounds_volumes: list
-        array with sound volume for every sound effect
+    :param sounds_folder_dir: path to folder which contains all sounds
+    :param music_folder_dir: path to folder which contains all musics
+    :param sound: array with mixer.Sounds
+    :param sounds_handles: dictionary with mapping between sounds handles and mixer.Sounds
+    :param sound_volume: volume factor which applyies to every sound effect
+    :param sounds_volumes: array with sound volume for every sound effect
     """
 
     SOUNDS_EXTENSIONS = ['.wav', '.mp3']
@@ -32,12 +24,8 @@ class AudioManager(metaclass=Singleton):
 
         It runs loads_sounds automatically.
 
-        Parameters
-        ----------
-        sounds_folder_dir : str
-            path to folder which contains all sounds
-        music_folder_dir : str
-            path to folder which contains all musics
+        :param sounds_folder_dir: path to folder which contains all sounds
+        :param music_folder_dir: path to folder which contains all musics
         """
         self.sounds_folder_dir = sounds_folder_dir
         self.music_folder_dir = music_folder_dir
@@ -65,7 +53,7 @@ class AudioManager(metaclass=Singleton):
             for file in files:
                 filename, ext = os.path.splitext(file)
                 if ext in self.SOUNDS_EXTENSIONS:
-                    sound = mixer.Sound(self.sounds_folder_dir+filename+ext)
+                    sound = mixer.Sound(os.path.join(self.sounds_folder_dir,filename+ext))
                     handle_sound = len(self.sounds)
                     self.sounds.append(sound)
                     self.sounds_handles[filename+ext] = handle_sound
@@ -74,15 +62,9 @@ class AudioManager(metaclass=Singleton):
         """
         Return a sound handle based on a filename, based on preloaded sounds.
 
-        Parameters
-        ----------
-        filename : str
-            sound filename
+        :param filename: sound filename
 
-        Return
-        -------
-        int
-            In a case when there's no any sound with requested filename, the methods Return -1.
+        :return: In a case when there's no any sound with requested filename, the methods Return -1.
         """
         if filename in self.sounds_handles:
             return self.sounds_handles[filename]
@@ -94,10 +76,7 @@ class AudioManager(metaclass=Singleton):
         """
         Return dictionary  of loaded sounds.
 
-        Return
-        ------
-        dict
-            dict <sound_filename, handle> of loaded sounds
+        :return: dict <sound_filename, handle> of loaded sounds
         """
         return self.sounds_handles
 
@@ -105,17 +84,10 @@ class AudioManager(metaclass=Singleton):
         """
         Play a sound based on its handle.
 
-        Parameters
-        ----------
-        handle : int
-            sound handle
-        volume : float, optional
-            sound volume
+        :param handle: sound handle
+        :param volume: sound volume
 
-        Return
-        -------
-        int
-            If handle is correct, Return 1. Else in Return 0
+        :return: If handle is correct, Return 1. Else in Return 0
         """
         if handle < 0 or handle >= len(self.sounds):
             return 0
@@ -129,17 +101,10 @@ class AudioManager(metaclass=Singleton):
         """
         Play a sound based on its filename.
 
-        Parameters
-        ----------
-        filename : str
-            sound filename
-        volume : float, optional
-            sound volume
+        :param filename: sound filename
+        :param volume: sound volume
 
-        Return
-        -------
-        int
-            If filename is correct, Return 1. Else in Return 0
+        :return: If filename is correct, Return 1. Else in Return 0
         """
         return self.play_sound(self.get_sound_handle(filename), volume)
 
@@ -150,14 +115,10 @@ class AudioManager(metaclass=Singleton):
         If a music stream is already playing it will be stopped.
         This does not start the music playing.
 
-        Parameters
-        ----------
-        filename : str
-            music filename
-        loop : int, optional
-            number of iterations for playing. -1 = endlessly
+        :param filename: music filename
+        :param loop: number of iterations for playing. -1 = endlessly
         """
-        mixer.music.load(self.music_folder_dir+filename)
+        mixer.music.load(os.path.join(self.music_folder_dir,filename))
         mixer.music.play(loop)
 
 
@@ -171,10 +132,7 @@ class AudioManager(metaclass=Singleton):
 
         Volume from 0 to 1.
 
-        Parameters
-        ----------
-        volume: float
-            music volume
+        :param volume: music volume
         """
         mixer.music.set_volume(volume)
 
@@ -182,10 +140,7 @@ class AudioManager(metaclass=Singleton):
         """
         Get background music volume.
 
-        Return
-        ------
-        float
-            background music volume
+        :return: background music volume
         """
         return mixer.music.get_volume()
 
@@ -193,10 +148,7 @@ class AudioManager(metaclass=Singleton):
         """
         Will change volume of all sounds.
 
-        Parameters
-        ----------
-        volume: float
-            music volume
+        :param volume: music volume
         """
         volume = min(max(volume, 0.0), 1.0)
         self.sound_volume = volume
@@ -209,10 +161,7 @@ class AudioManager(metaclass=Singleton):
         """
         Get sounds volume.
 
-        Return
-        ------
-        float
-            sounds volume
+        :return: sounds volume
         """
         return self.sound_volume
 
@@ -220,17 +169,10 @@ class AudioManager(metaclass=Singleton):
         """
         Will change volume of a particular sound based on its handle.
 
-        Parameteres
-        -----------
-        handle: int
-            sound handle
-        volume: float
-            sound volume
+        :param handle: sound handle
+        :param volume: sound volume
 
-        Return
-        -------
-        int
-            If handle is correct, Return 1. Else in Return 0
+        :return: If handle is correct, Return 1. Else in Return 0
         """
         if handle < 0 or handle >= len(self.sounds):
             return 0
@@ -246,15 +188,9 @@ class AudioManager(metaclass=Singleton):
         """
         Will stop a particular sound.
 
-        Parameteres
-        -----------
-        handle: int
-            sound handle
+        :param handle: sound handle
 
-        Return
-        -------
-        int
-            If handle is correct, Return 1. Else in Return 0
+        :return: If handle is correct, Return 1. Else in Return 0
         """
         if handle < 0 or handle >= len(self.sounds):
             return 0

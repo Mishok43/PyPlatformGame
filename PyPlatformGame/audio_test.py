@@ -1,17 +1,25 @@
 """Audio test is responsible for testing AudioManager."""
 
+import os
 import unittest
 import pygame
 
-from audiomanager import AudioManager
+from .audiomanager import AudioManager
 
 
 class AudioManagerTest(unittest.TestCase):
     """Test class for validating AudioManager."""
 
+    def setup_audiomanager(self):
+        """Setuping audiomanager before testing."""
+        base_dir = os.path.dirname(__file__)
+        sounds_folder  = os.path.join(base_dir, 'assets', 'testsounds')
+        AudioManager().init_sounds(sounds_folder, "")
+
     def test_loading(self):
         """Checking loading sounds from a test folder."""
-        audio_manager = AudioManager("sounds/", "")
+        self.setup_audiomanager()
+        audio_manager = AudioManager()
         loaded_sounds = audio_manager.get_loaded_sounds()
         self.assertEqual(len(loaded_sounds.keys()), 3)
         self.assertTrue('pop1.wav' in loaded_sounds)
@@ -20,14 +28,18 @@ class AudioManagerTest(unittest.TestCase):
 
     def test_handlers(self):
         """Checking work with handles of sounds."""
-        audio_manager = AudioManager("sounds/", "")
+        self.setup_audiomanager()
+        audio_manager = AudioManager()
+
         self.assertEqual(audio_manager.get_sound_handle('pop1.wav'), 0)
         self.assertEqual(audio_manager.get_sound_handle('pop2.mp3'), 1)
         self.assertEqual(audio_manager.get_sound_handle('pop3.wav'), 2)
 
     def test_playing(self):
         """Checking sound playing."""
-        audio_manager = AudioManager("sounds/", "")
+        self.setup_audiomanager()
+
+        audio_manager = AudioManager()
         handle_1 = audio_manager.get_sound_handle('pop1.wav')
         handle_2 = audio_manager.get_sound_handle('pop2.mp3')
         handle_3 = audio_manager.get_sound_handle('pop3.wav')
