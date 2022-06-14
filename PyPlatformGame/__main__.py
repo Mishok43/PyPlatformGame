@@ -75,14 +75,14 @@ def lang_callback_ru():
     global prev_state
     prev_state = None
     base_dir = os.path.dirname(__file__)
-    t = gettext.translation('messages', os.path.join(base_dir, 'locals'), languages=['ru'])
+    t = gettext.translation('PyPlatformGame', base_dir, languages=['ru'])
     t.install()
 
 def lang_callback_en():
     global prev_state
     prev_state = None
     base_dir = os.path.dirname(__file__)
-    t = gettext.translation('messages', os.path.join(base_dir, 'locals'), languages=['en'])
+    t = gettext.translation('PyPlatformGame', base_dir, languages=['en'])
     t.install()
 
 lang_callback_en()
