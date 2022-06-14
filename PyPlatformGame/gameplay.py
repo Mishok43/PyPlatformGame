@@ -14,11 +14,13 @@ from . import billboard_renderer as billy
 from . import input_data
 from . import player
 from . import enemy
+from . import camera
 from . import death_manager
 
 @dataclass
 class GameplayCallbacks:
     """Callbacks for various gameplay events."""
+    camera_callback: Callable
     billboard_render: Callable
     player_death: Callable
     enemy_death: Callable
@@ -29,17 +31,19 @@ class Gameplay:
     def __init__(self, level_filename: str, clb: GameplayCallbacks):
         """Load description of level from JSON file."""
         self.world = esper.World()
-        self.world.add_processor(billy.RenderProcessor(clb.billboard_render))
-        self.world.add_processor(player.PhysicsProcessor(), priority=2)
+        self.world.add_processor(camera.CameraProcessor(clb.camera_callback), priority=1)
+        self.world.add_processor(billy.RenderProcessor(clb.billboard_render), priority=2)
+        self.world.add_processor(player.PhysicsProcessor(), priority=3)
         self.world.add_processor(death_manager.DeathProcessor(clb.player_death,
-                                                clb.enemy_death), priority=3)
-        self.world.add_processor(collision.CollisionProcessor(), priority=4)
-        self.world.add_processor(ceiling_bump.CeilingBumpProcessor(), priority=5)
-        self.world.add_processor(gravity.GravityProcessor(), priority=6)
-        self.world.add_processor(enemy.ControllerProcessor(), priority=7)
-        self.world.add_processor(player.DisjointedController(), priority=8)
+                                                clb.enemy_death), priority=4)
+        self.world.add_processor(collision.CollisionProcessor(), priority=5)
+        self.world.add_processor(ceiling_bump.CeilingBumpProcessor(), priority=6)
+        self.world.add_processor(gravity.GravityProcessor(), priority=7)
+        self.world.add_processor(enemy.ControllerProcessor(), priority=8)
+        self.world.add_processor(player.DisjointedController(), priority=9)
         self.input_entity = self.world.create_entity(input_data.InputComponent())
-        self.world.add_processor(player.InputProcessor(self.input_entity), priority=9)
+        self.world.add_processor(player.InputProcessor(self.input_entity), priority=10)
+
         with open(level_filename, encoding='utf-8') as file:
             level = json.load(file)
             player_descr = level["player"]
@@ -50,7 +54,8 @@ class Gameplay:
                     velocity.VelocityComponent(direction=(0, 0)),
                     gravity.SusceptibleToGravityComponent(),
                     input_data.SusceptibleToInputComponent(),
-                    player.StateComponent())
+                    player.StateComponent(),
+                    camera.FollowCameraComponent())
             for enemy_descr in level["enemies"]:
                 motion = enemy_descr["motion"]
                 self.world.create_entity(

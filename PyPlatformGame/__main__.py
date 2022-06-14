@@ -37,6 +37,9 @@ def billboard_render(tex, pos, size):
     h_w = app_state().screen_res[1] / app_state().screen_res[0]
     scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
 
+def camera_callback(pos):
+    pass
+
 def enemy_death_callback():
     global killed_enemy_count
     killed_enemy_count += 1
@@ -151,8 +154,11 @@ init_app_state((1280, 720),
             os.path.join(base_dir, 'shaders'),
             os.path.join(base_dir, 'assets', 'textures'),
             os.path.join(base_dir, 'assets', 'meshes'))
-gameplay = gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(billboard_render, player_death_callback, enemy_death_callback))
+gameplay = Gameplay(
+    os.path.join(base_dir, 'assets', 'level.json'),
+    GameplayCallbacks(
+        camera_callback, billboard_render, player_death_callback, enemy_death_callback)
+)
 scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
 clock = pg.time.Clock()
 FPS = 60
