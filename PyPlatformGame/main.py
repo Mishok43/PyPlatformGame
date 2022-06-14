@@ -26,6 +26,7 @@ should_stop = False
 scene = None
 gameplay = None
 interface = None
+cur_screen = [0, 0]
 
 def sound_callback(l: float):
     AudioManager().set_sounds_volume(l)
@@ -35,10 +36,23 @@ def music_callback(l: float):
 
 def billboard_render(tex, pos, size, order = 0):
     h_w = app_state().screen_res[1] / app_state().screen_res[0]
-    scene.add_bilboard(tex, ((pos[0] + 0.5 * size[0]) * h_w, pos[1] + 0.5 * size[1]), (size[0] * h_w, size[1]))
+    scene.add_bilboard(tex,
+            (
+                (pos[0] + 0.5 * size[0] - cur_screen[0]) * h_w,
+                pos[1] + 0.5 * size[1] - cur_screen[1]
+            ),
+            (size[0] * h_w, size[1]),
+            order)
 
 def camera_callback(pos):
-    pass
+    global cur_screen
+    CAMERA_MOVEMENT_THR = (0.7, 0.5)
+    screen_size = (app_state().screen_res[0] / app_state().screen_res[1], 1)
+    for dim in range(2):
+        if pos[dim] < cur_screen[dim] + CAMERA_MOVEMENT_THR[dim]:
+            cur_screen[dim] = pos[dim] - CAMERA_MOVEMENT_THR[dim]
+        elif pos[dim] > cur_screen[dim] + screen_size[dim] - CAMERA_MOVEMENT_THR[dim]:
+            cur_screen[dim] = pos[dim] - screen_size[dim] + CAMERA_MOVEMENT_THR[dim]
 
 def enemy_death_callback():
     if click_sound_handle != -1:

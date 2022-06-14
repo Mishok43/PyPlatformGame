@@ -23,6 +23,7 @@ class Billboard:
     tex_name: str
     pos: glm.vec2
     size: glm.vec2
+    order: int
 
 @dataclass
 class Light:
@@ -73,9 +74,9 @@ class Scene:
         """Prepare for rendering."""
         self.billboard_list = []
     def add_bilboard(self, name: str, pos: Tuple[float, float],
-                    size: Tuple[float, float]) -> None:
+                    size: Tuple[float, float], order: int) -> None:
         """Add billboard object to be rendered on current frame."""
-        self.billboard_list.append(Billboard(name, pos, size))
+        self.billboard_list.append(Billboard(name, pos, size, order))
     def render_to_shadow(self):
         """Render all needed parts to shadow map texture."""
         light_v = glm.lookAt(self.light.pos, self.light.pos + self.light.dir, glm.vec3(0,1,0))
@@ -119,6 +120,8 @@ class Scene:
             #                     app_state().texture_manager.get(elem.tex_name))
             app_state().mesh_manager.draw(elem.mesh_name)
         # billboards
+        self.billboard_list.sort(reverse=True,
+                    key=lambda billboard: billboard.order)
         app_state().shader_manager.use_program('tex_rect')
         blend = GL.glGetBooleanv(GL.GL_BLEND)
         blend_src = GL.glGetIntegerv(GL.GL_BLEND_SRC_ALPHA)
