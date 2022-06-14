@@ -9,17 +9,16 @@ from .scene import Scene, Camera
 from .renderer import draw
 import pygame as pg
 from .gameplay import Gameplay, GameplayCallbacks
+from .audiomanager import AudioManager
 
-sound = 0.5
-music = 0.5
+
 def sound_callback(l: float):
-    global sound
-    sound = l
+    AudioManager().set_sounds_volume(l)
     print('Sound', l)
 def music_callback(l: float):
-    global music
-    music = l
+    AudioManager().set_background_volume(l)
     print('Music', l)
+
 
 
 killed_enemy_count = 0
@@ -46,14 +45,23 @@ def player_death_callback():
     cur_state = RESULTS
 
 def exit_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(click_sound_handle)
+
     global should_stop
     should_stop = True
 
 def play_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(click_sound_handle)
+
     global cur_state
     cur_state = GAME
 
 def menu_callback():
+    if click_sound_handle != -1:
+        AudioManager().play_sound(click_sound_handle)
+        
     global cur_state
     global killed_enemy_count
     global gameplay
@@ -157,12 +165,18 @@ scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
 clock = pg.time.Clock()
 FPS = 60
 
+audiomanager = AudioManager()
+sound_path = os.path.join(base_dir, 'assets', 'sounds')
+audiomanager.init_sounds(sound_path, sound_path)
+audiomanager.play_background_music("soundtrack.mp3")
+click_sound_handle = AudioManager().get_sound_handle("click_button.wav")
+
 while True:
     if cur_state != prev_state:
         if cur_state == MENU:
-            interface = menu_ui(play_callback, exit_callback, sound_callback, music_callback, (sound, music), (lang_callback_ru, lang_callback_en))
+            interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()), (lang_callback_ru, lang_callback_en))
         elif cur_state == PAUSE:
-            interface = pause_ui(play_callback, menu_callback, sound_callback, music_callback, (sound, music))
+            interface = pause_ui(play_callback, menu_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()))
         elif cur_state == GAME:
             interface = game_ui()
         elif cur_state == RESULTS:

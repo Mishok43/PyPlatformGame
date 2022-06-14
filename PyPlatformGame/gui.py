@@ -128,6 +128,7 @@ class Button:
         self.descr = b_descr
         self.callback = callback
         self.pos = (pos_size[0], pos_size[1])
+
     def render(self, background_tex: int) -> None:
         """Render button."""
         app_state().shader_manager.use_program('button_background')
