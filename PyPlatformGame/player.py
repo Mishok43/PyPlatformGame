@@ -87,15 +87,11 @@ class DisjointedController(esper.Processor):
                 box.pos = glm.vec2(aabb.extent(host_box).x, aabb.top(host_box))
             else:
                 box.pos = glm.vec2(aabb.left(host_box) - box.dim.x, aabb.top(host_box))
-            self.world.add_component(ent, box)
 
             params.time -= dt
             if params.time < 0.0:
                 self.world.delete_entity(ent)
                 state.has_disjointed = False
-                self.world.add_component(params.host, state)
-            else:
-                self.world.add_component(ent, params)
 
 
 @dataclass
@@ -126,17 +122,18 @@ class InputProcessor(esper.Processor):
         input_component = self.world.component_for_entity(
                 self.input_entity, input_data.InputComponent)
 
-        for ent, (state, _, vel, grav) in self.world.get_components(
+        for ent, (state, _, vel, grav, tex) in self.world.get_components(
                 StateComponent,
                 input_data.SusceptibleToInputComponent,
                 velocity.VelocityComponent,
-                gravity.SusceptibleToGravityComponent):
+                gravity.SusceptibleToGravityComponent,
+                billy.TextureComponent):
 
             vel_h = input_component.move_direction * PLAYER_SPEED * dt
 
             if abs(vel_h) > 0.0001:
                 state.face_right = vel_h > 0.0
-                self.world.add_component(ent, state)
+                tex.face_right = state.face_right
 
             vel_v = vel.direction.y
 
@@ -160,7 +157,6 @@ class InputProcessor(esper.Processor):
             elif not state.has_disjointed and not state.attack_held:
                 state.has_disjointed = True
                 state.attack_held = True
-                self.world.add_component(ent, state)
 
                 self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(0.07, 0.07)),
                         billy.TextureComponent(tex_name="cross.png"),

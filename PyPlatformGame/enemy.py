@@ -7,6 +7,7 @@ from typing import Tuple
 import esper
 import glm
 
+from . import billboard_renderer as billy
 from .physics import aabb
 
 
@@ -48,24 +49,24 @@ class ControllerProcessor(esper.Processor):
 
     def process(self, dt: float, *_):
         """Process enemy logic."""
-        for ent, (box, settings, timer) in self.world.get_components(
-                aabb.AABBComponent, SettingsComponent, TimerComponent):
+        for ent, (box, settings, timer, tex) in self.world.get_components(
+                aabb.AABBComponent, SettingsComponent, TimerComponent, billy.TextureComponent):
 
             if not timer.is_set:
                 timer.time = settings.mirror_time
                 timer.is_set = True
-                self.world.add_component(ent, timer)
                 continue
 
+            vel = settings.direction * glm.vec2(dt)
             if settings.mirror_state:
-                box.pos += settings.direction * glm.vec2(dt)
+                box.pos += vel
             else:
-                box.pos += settings.direction * -settings.mirror_axis * glm.vec2(dt)
+                box.pos += -settings.mirror_axis * vel
+
+            if abs(vel.x) > 0.0001:
+                tex.face_right = vel.x > 0.0
 
             timer.time -= dt
             if timer.time < 0.0:
                 timer.time = settings.mirror_time
-                self.world.add_component(ent, timer)
-
                 settings.mirror_state = not settings.mirror_state
-                self.world.add_component(ent, settings)
