@@ -76,6 +76,127 @@
                     "y_rotation": 0
                 }
             ]
+        },
+        {
+            "mesh_name": "tree1.obj",
+            "tex_name": "tree1.png",
+            "transforms": [
+                {
+                    "position": [90, 0, 80],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree2.obj",
+            "tex_name": "tree2.png",
+            "transforms": [
+                {
+                    "position": [90, 0, -70],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree3.obj",
+            "tex_name": "tree3.png",
+            "transforms": [
+                {
+                    "position": [15, 0, 25],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree4.obj",
+            "tex_name": "tree4.png",
+            "transforms": [
+                {
+                    "position": [40, 0, 0],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree5.obj",
+            "tex_name": "tree5.png",
+            "transforms": [
+                {
+                    "position": [-40, 0, 100],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree6.obj",
+            "tex_name": "tree6.png",
+            "transforms": [
+                {
+                    "position": [60, 0, 40],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree7.obj",
+            "tex_name": "tree7.png",
+            "transforms": [
+                {
+                    "position": [20, 0, 100],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree8.obj",
+            "tex_name": "tree8.png",
+            "transforms": [
+                {
+                    "position": [-90, 0, 30],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree8.obj",
+            "tex_name": "tree8.png",
+            "transforms": [
+                {
+                    "position": [0, 0, -100],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree9.obj",
+            "tex_name": "tree9.png",
+            "transforms": [
+                {
+                    "position": [-120, 0, -20],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "tree8.obj",
+            "tex_name": "tree8.png",
+            "transforms": [
+                {
+                    "position": [100, 0, 0],
+                    "scale": [15, 15, 15],
+                    "y_rotation": 0
+                }
+            ]
         }
     ],
     "z_near": 10,
