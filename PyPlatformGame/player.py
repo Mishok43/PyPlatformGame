@@ -133,12 +133,15 @@ class InputProcessor(esper.Processor):
 
             if abs(vel_h) > 0.0001:
                 state.face_right = vel_h > 0.0
+                tex.wobble_time += dt
                 tex.face_right = state.face_right
+            else:
+                tex.wobble_time = 0.0
 
             vel_v = vel.direction.y
 
             if not self.jump_held and input_component.do_jump and \
-                    (_ := self.world.try_component(ent, collision.GroundedComponent)):
+                    self.world.has_component(ent, collision.GroundedComponent):
 
                 vel_v = -JUMP_MULTIPLIER * grav.force
                 self.jump_held = True
@@ -148,6 +151,9 @@ class InputProcessor(esper.Processor):
                 if vel_v < 0.0:
                     self.world.add_component(ent, collision.CeilingBumpComponent())
                 self.jump_held = False
+
+            if not self.world.has_component(ent, collision.GroundedComponent):
+                tex.wobble_time = 0.0
 
             vel_new = velocity.VelocityComponent(direction=glm.vec2(vel_h, vel_v))
             self.world.add_component(ent, vel_new)
