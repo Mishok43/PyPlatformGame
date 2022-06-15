@@ -126,17 +126,20 @@ class InputProcessor(esper.Processor):
         input_component = self.world.component_for_entity(
                 self.input_entity, input_data.InputComponent)
 
-        for ent, (state, _, vel, grav) in self.world.get_components(
+        for ent, (state, _, vel, grav, tex) in self.world.get_components(
                 StateComponent,
                 input_data.SusceptibleToInputComponent,
                 velocity.VelocityComponent,
-                gravity.SusceptibleToGravityComponent):
+                gravity.SusceptibleToGravityComponent,
+                billy.TextureComponent):
 
             vel_h = input_component.move_direction * PLAYER_SPEED * dt
 
             if abs(vel_h) > 0.0001:
                 state.face_right = vel_h > 0.0
+                tex.face_right = state.face_right
                 self.world.add_component(ent, state)
+                self.world.add_component(ent, tex)
 
             vel_v = vel.direction.y
 
