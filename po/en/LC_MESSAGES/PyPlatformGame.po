@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-15 00:50+0300\n"
+"POT-Creation-Date: 2022-06-15 22:04+0300\n"
 "PO-Revision-Date: 2022-06-14 01:45+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.1\n"
 
-#: PyPlatformGame/ui_descr.py:27
+#: PyPlatformGame/ui_descr.py:26
 msgid "Play"
 msgstr "Play"
 
-#: PyPlatformGame/ui_descr.py:29
+#: PyPlatformGame/ui_descr.py:28
 msgid "Exit"
 msgstr "Exit"
 
-#: PyPlatformGame/ui_descr.py:31
+#: PyPlatformGame/ui_descr.py:30
 msgid "Ru"
 msgstr "Ru"
 
-#: PyPlatformGame/ui_descr.py:33
+#: PyPlatformGame/ui_descr.py:32
 msgid "En"
 msgstr "En"
 
-#: PyPlatformGame/ui_descr.py:41
+#: PyPlatformGame/ui_descr.py:40
 msgid "GAME"
 msgstr "GAME"
 
@@ -42,35 +42,39 @@ msgstr "GAME"
 msgid "Language"
 msgstr "Language"
 
-#: PyPlatformGame/ui_descr.py:43 PyPlatformGame/ui_descr.py:68
+#: PyPlatformGame/ui_descr.py:44 PyPlatformGame/ui_descr.py:72
 msgid "Music"
 msgstr "Music"
 
-#: PyPlatformGame/ui_descr.py:44 PyPlatformGame/ui_descr.py:69
+#: PyPlatformGame/ui_descr.py:46 PyPlatformGame/ui_descr.py:74
 msgid "Sounds"
 msgstr "Sounds"
 
-#: PyPlatformGame/ui_descr.py:57
+#: PyPlatformGame/ui_descr.py:60
 msgid "Continue"
 msgstr "Continue"
 
-#: PyPlatformGame/ui_descr.py:59 PyPlatformGame/ui_descr.py:82
+#: PyPlatformGame/ui_descr.py:62 PyPlatformGame/ui_descr.py:89
 msgid "Main menu"
 msgstr "Main menu"
 
-#: PyPlatformGame/ui_descr.py:67
+#: PyPlatformGame/ui_descr.py:70
 msgid "Loudness"
 msgstr "Loudness"
 
-#: PyPlatformGame/ui_descr.py:80
+#: PyPlatformGame/ui_descr.py:87
 msgid "Restart"
 msgstr "Restart"
 
-#: PyPlatformGame/ui_descr.py:87
+#: PyPlatformGame/ui_descr.py:94
+msgid "YOU WON!!!"
+msgstr "YOU WON!!!"
+
+#: PyPlatformGame/ui_descr.py:97
 msgid "YOU LOST!!!"
 msgstr "YOU LOST!!!"
 
-#: PyPlatformGame/ui_descr.py:88
+#: PyPlatformGame/ui_descr.py:99
 msgid "ENEMIES KILLED: {}"
 msgstr "ENEMIES KILLED: {}"
 

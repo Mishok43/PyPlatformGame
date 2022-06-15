@@ -115,22 +115,5 @@ def task_all():
     """Perform all build task."""
     return {
             'actions': None,
-            'task_dep': ['html', 'wheel'] #['check', 'html', 'wheel', 'req']
+            'task_dep': ['check', 'html', 'wheel']
            }
-
-
-# def task_req():
-#     """Generate runtime requirements."""
-#     return {
-#             'actions': ['pipenv lock -r > requirements.txt'],
-#             'targets': ['requirements.txt'],
-#             'clean': True,
-#            }
-
-
-# def task_buildreq():
-#     """Try to calculate build requirements."""
-#     return {
-#             'actions': ['python BuildReq.py doit all'],
-#             'task_dep': ['gitclean']
-#            }

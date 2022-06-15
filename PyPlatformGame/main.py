@@ -1,232 +1,249 @@
-import glm
-from math import sin, cos
+"""Module with implementation of main game loop and additional data."""
+from dataclasses import dataclass
 import gettext
+from math import sin, cos
 import os
+from typing import Tuple
+import pygame as pg
+import glm
 from .app_state import app_state, init_app_state, delete_app_state
-from .render.shaders import ShaderManager
-from .ui_descr import menu_ui, pause_ui, game_ui, results_ui
+from .ui_descr import menu_ui, pause_ui, game_ui, results_ui, UI
 from .scene import Scene, Camera
 from .renderer import draw
-import pygame as pg
 from .gameplay import Gameplay, GameplayCallbacks
 from .audiomanager import AudioManager
 
-base_dir = None
-click_sound_handle = None
-kill_sound_handle = None
-die_sound_handle = None
-attack_sound_handle = None
-killed_enemy_count = 0
-MENU = 1
-GAME = 2
-PAUSE = 3
-RESULTS = 4
-cur_state = MENU
-prev_state = None
-should_stop = False
-scene = None
-gameplay = None
-interface = None
-cur_screen = [0, 0]
 
-def sound_callback(l: float):
-    AudioManager().set_sounds_volume(l)
+FPS: int = 60
+MENU: int = 1
+GAME: int = 2
+PAUSE: int = 3
+RESULTS: int = 4
+ROTATION_SPEED: float = 0.3
+VERTICAL_SPEED: float = 0.5
+ROTATION_SCALE: float = 1
+VERTICAL_SCALE: float = 10
+CAMERA_LIMIT_X: float = 0.7
+CAMERA_LIMIT_Y: float = 0.5
 
-def music_callback(l: float):
-    AudioManager().set_background_volume(l)
+@dataclass
+class GameState:
+    """Storage for all non-render state of game."""
 
-def billboard_render(tex, pos, size, order = 0):
+    cur_state: int = MENU
+    prev_state: int = None
+    killed_enemy_count: int = 0
+    won: bool = False
+    should_quit: bool = False
+
+    click_sound_handle: int = None
+    kill_sound_handle: int = None
+    die_sound_handle: int = None
+    attack_sound_handle: int = None
+
+    scene: Scene = None
+    gameplay: Gameplay = None
+    interface: UI = None
+
+    screen_x: float = 0
+    screen_y: float = 0
+
+G_STATE = GameState()
+
+def sound_callback(loudness: float):
+    """Set volume of sound."""
+    AudioManager().set_sounds_volume(loudness)
+
+def music_callback(loudness: float):
+    """Set volume of music."""
+    AudioManager().set_background_volume(loudness)
+
+def billboard_render(tex: str, pos: glm.vec2, size: glm.vec2, order: int = 0) -> None:
+    """Add billboard to render list."""
     h_w = app_state().screen_res[1] / app_state().screen_res[0]
-    scene.add_bilboard(tex,
+    G_STATE.scene.add_bilboard(tex,
             (
-                (pos[0] + 0.5 * size[0] - cur_screen[0]) * h_w,
-                pos[1] + 0.5 * size[1] - cur_screen[1]
+                (pos[0] + 0.5 * size[0] - G_STATE.screen_x) * h_w,
+                pos[1] + 0.5 * size[1] - G_STATE.screen_y
             ),
             (size[0] * h_w, size[1]),
             order)
 
 def attack_sound_callback():
-    global attack_sound_handle
+    """Play attack sound."""
+    if G_STATE.attack_sound_handle != -1:
+        AudioManager().play_sound(G_STATE.attack_sound_handle)
 
-    if attack_sound_handle != -1:
-        AudioManager().play_sound(attack_sound_handle)
+def win_callback() -> None:
+    """Prepare to showq won game screen."""
+    G_STATE.won = True
+    G_STATE.cur_state = RESULTS
 
-def win_callback():
-    global cur_state
-    cur_state = RESULTS
-
-def camera_callback(pos):
-    global cur_screen
-    CAMERA_MOVEMENT_THR = (0.7, 0.5)
+def camera_callback(pos: Tuple[int, int]) -> None:
+    """Update camera, following the player."""
     screen_size = (app_state().screen_res[0] / app_state().screen_res[1], 1)
-    for dim in range(2):
-        if pos[dim] < cur_screen[dim] + CAMERA_MOVEMENT_THR[dim]:
-            cur_screen[dim] = pos[dim] - CAMERA_MOVEMENT_THR[dim]
-        elif pos[dim] > cur_screen[dim] + screen_size[dim] - CAMERA_MOVEMENT_THR[dim]:
-            cur_screen[dim] = pos[dim] - screen_size[dim] + CAMERA_MOVEMENT_THR[dim]
+    if pos[0] < G_STATE.screen_x + CAMERA_LIMIT_X:
+        G_STATE.screen_x = pos[0] - CAMERA_LIMIT_X
+    elif pos[0] > G_STATE.screen_x + screen_size[0] - CAMERA_LIMIT_X:
+        G_STATE.screen_x = pos[0] - screen_size[0] + CAMERA_LIMIT_X
+    if pos[1] < G_STATE.screen_y + CAMERA_LIMIT_Y:
+        G_STATE.screen_y = pos[1] - CAMERA_LIMIT_Y
+    elif pos[1] > G_STATE.screen_y + screen_size[1] - CAMERA_LIMIT_Y:
+        G_STATE.screen_y = pos[1] - screen_size[1] + CAMERA_LIMIT_Y
 
-def enemy_death_callback():
-    if click_sound_handle != -1:
-        AudioManager().play_sound(kill_sound_handle)
+def enemy_death_callback() -> None:
+    """Inform enemy death."""
+    if G_STATE.click_sound_handle != -1:
+        AudioManager().play_sound(G_STATE.kill_sound_handle)
+    G_STATE.killed_enemy_count += 1
 
-    global killed_enemy_count
-    killed_enemy_count += 1
+def player_death_callback() -> None:
+    """Inform player death and prepare to show lost game screen."""
+    if G_STATE.click_sound_handle != -1:
+        AudioManager().play_sound(G_STATE.die_sound_handle)
+    G_STATE.won = False
+    G_STATE.cur_state = RESULTS
 
-def player_death_callback():
-    if click_sound_handle != -1:
-        AudioManager().play_sound(die_sound_handle)
+def exit_callback() -> None:
+    """Prepare to exit an app."""
+    if G_STATE.click_sound_handle != -1:
+        AudioManager().play_sound(G_STATE.click_sound_handle)
+    G_STATE.should_quit = True
 
-    global cur_state
-    cur_state = RESULTS
+def play_callback() -> None:
+    """Start or continue the game."""
+    if G_STATE.click_sound_handle != -1:
+        AudioManager().play_sound(G_STATE.click_sound_handle)
+    G_STATE.cur_state = GAME
 
-def exit_callback():
-    if click_sound_handle != -1:
-        AudioManager().play_sound(click_sound_handle)
+def menu_callback() -> None:
+    """Return to main menu."""
+    if G_STATE.click_sound_handle != -1:
+        AudioManager().play_sound(G_STATE.click_sound_handle)
+    G_STATE.killed_enemy_count = 0
+    G_STATE.cur_state = MENU
 
-    global should_stop
-    should_stop = True
+def restart_callback() -> None:
+    """Restart the game."""
+    G_STATE.killed_enemy_count = 0
+    G_STATE.cur_state = GAME
 
-def play_callback():
-    if click_sound_handle != -1:
-        AudioManager().play_sound(click_sound_handle)
-
-    global cur_state
-    cur_state = GAME
-
-def menu_callback():
-    if click_sound_handle != -1:
-        AudioManager().play_sound(click_sound_handle)
-        
-    global cur_state
-    global killed_enemy_count
-    global gameplay
-    killed_enemy_count = 0
-    cur_state = MENU
-    gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(attack_sound_callback, win_callback, camera_callback, billboard_render,
-                player_death_callback, enemy_death_callback))
-
-def restart_callback():
-    global cur_state
-    global killed_enemy_count
-    global gameplay
-    killed_enemy_count = 0
-    cur_state = GAME
-    gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(attack_sound_callback, win_callback, camera_callback, billboard_render,
-                player_death_callback, enemy_death_callback))
-
-def lang_callback_ru():
-    global prev_state
-    prev_state = None
+def lang_callback_ru() -> None:
+    """Set RU language for game."""
+    G_STATE.prev_state = None
     base_dir = os.path.dirname(__file__)
-    t = gettext.translation('PyPlatformGame', base_dir, languages=['ru'])
-    t.install()
+    transl = gettext.translation('PyPlatformGame', base_dir, languages=['ru'])
+    transl.install()
 
-def lang_callback_en():
-    global prev_state
-    prev_state = None
+def lang_callback_en() -> None:
+    """Set EN language for game."""
+    G_STATE.prev_state = None
     base_dir = os.path.dirname(__file__)
-    t = gettext.translation('PyPlatformGame', base_dir, languages=['en'])
-    t.install()
+    transl = gettext.translation('PyPlatformGame', base_dir, languages=['en'])
+    transl.install()
 
-lang_callback_en()
+def process_state(base_dir: str) -> None:
+    """Update game state tracking and interface layout."""
+    if G_STATE.cur_state != G_STATE.prev_state:
+        if G_STATE.cur_state == MENU:
+            G_STATE.interface = menu_ui(
+                    (play_callback, exit_callback, music_callback, sound_callback),
+                    (AudioManager().get_background_volume(),
+                    AudioManager().get_sounds_volume()),
+                    (lang_callback_ru, lang_callback_en))
+        elif G_STATE.cur_state == PAUSE:
+            G_STATE.interface = pause_ui(play_callback, menu_callback,
+                                        music_callback, sound_callback,
+                                        (AudioManager().get_background_volume(),
+                                        AudioManager().get_sounds_volume()))
+        elif G_STATE.cur_state == GAME:
+            G_STATE.interface = game_ui()
+            if G_STATE.prev_state != PAUSE:
+                G_STATE.gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
+                    GameplayCallbacks(win_callback, camera_callback, billboard_render,
+                        player_death_callback, enemy_death_callback))
+        elif G_STATE.cur_state == RESULTS:
+            G_STATE.interface = results_ui(restart_callback, menu_callback,
+                                        G_STATE.killed_enemy_count, G_STATE.won)
+        G_STATE.prev_state = G_STATE.cur_state
 
-def process_keyboard():
-    global cur_state
-    global scene
-    global gameplay
+def input_logic() -> None:
+    """Process inputs."""
     keys = pg.key.get_pressed()
-    if keys[pg.K_r]:
-        app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
-        scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
-        gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(attack_sound_callback, win_callback, camera_callback, billboard_render,
-                player_death_callback, enemy_death_callback))
-    elif keys[pg.K_ESCAPE]:
-        cur_state = PAUSE
-
-def logic():
-    global should_stop
-    if cur_state == GAME:
-        process_keyboard()
-    for s in interface.sliders:
-        s.process_input()
-    for e in pg.event.get():
-        if e.type == pg.QUIT:
-            should_stop = True
+    if keys[pg.K_ESCAPE] and G_STATE.cur_state == GAME:
+        G_STATE.cur_state = PAUSE
+    for slider in G_STATE.interface.sliders:
+        slider.process_input()
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            G_STATE.should_quit = True
         else:
-            for b in interface.buttons:
-                b.process_event(e)
+            for button in G_STATE.interface.buttons:
+                button.process_event(event)
+    G_STATE.gameplay.process_input()
 
-def main():
-    global scene
-    global interface
-    global gameplay
-    global base_dir
-    global click_sound_handle
-    global kill_sound_handle
-    global die_sound_handle
-    global attack_sound_handle
-    global cur_state
-    global prev_state
+
+def main() -> None:
     pg.init()
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
     pg.display.set_mode((1280, 720), pg.OPENGL|pg.DOUBLEBUF)
+
     base_dir = os.path.dirname(__file__)
+
     init_app_state((1280, 720),
                 os.path.join(base_dir, 'shaders'),
                 os.path.join(base_dir, 'assets', 'textures'),
                 os.path.join(base_dir, 'assets', 'meshes'))
-    gameplay = Gameplay(
+    G_STATE.gameplay = Gameplay(
         os.path.join(base_dir, 'assets', 'level.json'),
         GameplayCallbacks(
             attack_sound_callback, win_callback, camera_callback, billboard_render,
             player_death_callback, enemy_death_callback)
     )
-    scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
-    time = 0
-    ROTATION_SPEED = 0.3
-    VERTICAL_SPEED = 0.5
-    clock = pg.time.Clock()
-    FPS = 60
+    G_STATE.scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
+    lang_callback_en()
 
     audiomanager = AudioManager()
     sound_path = os.path.join(base_dir, 'assets', 'sounds')
     audiomanager.init_sounds(sound_path, sound_path)
     audiomanager.play_background_music("soundtrack.mp3")
-    click_sound_handle = AudioManager().get_sound_handle("click_button.wav")
-    die_sound_handle = AudioManager().get_sound_handle("die.wav")
-    kill_sound_handle = AudioManager().get_sound_handle("kill.wav")
-    attack_sound_handle = AudioManager().get_sound_handle("attack.wav")
+    G_STATE.click_sound_handle = AudioManager().get_sound_handle("click_button.wav")
+    G_STATE.die_sound_handle = AudioManager().get_sound_handle("die.wav")
+    G_STATE.kill_sound_handle = AudioManager().get_sound_handle("kill.wav")
+    G_STATE.attack_sound_handle = AudioManager().get_sound_handle("attack.wav")
+
+    time = 0
+    clock = pg.time.Clock()
+
     while True:
-        pos = glm.vec3(sin(time * ROTATION_SPEED)*150, 30.0 + sin(time * VERTICAL_SPEED) * 20, cos(time * ROTATION_SPEED)*150)
-        dir = glm.normalize(-pos)
-        if cur_state != prev_state:
-            if cur_state == MENU:
-                interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()), (lang_callback_ru, lang_callback_en))
-            elif cur_state == PAUSE:
-                interface = pause_ui(play_callback, menu_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()))
-            elif cur_state == GAME:
-                interface = game_ui()
-            elif cur_state == RESULTS:
-                interface = results_ui(restart_callback, menu_callback, killed_enemy_count)
-            prev_state = cur_state
+        if G_STATE.cur_state == MENU:
+            pos = glm.vec3(
+                    sin(time * ROTATION_SPEED)*150,
+                    30.0 + sin(time * VERTICAL_SPEED) * 20,
+                    cos(time * ROTATION_SPEED)*150)
+            direction = glm.normalize(-pos)
+        else:
+            pos = glm.vec3(
+                sin(G_STATE.screen_x * ROTATION_SCALE)*150,
+                30.0 + max(0, min(20, G_STATE.screen_y * VERTICAL_SCALE)),
+                cos(G_STATE.screen_x * ROTATION_SCALE)*150)
+            direction = glm.normalize(-pos)
+        process_state(base_dir)
         delta_time = clock.tick(FPS) / 1000
         time += delta_time
-        scene.before_render()
-        logic()
-        gameplay.process_input()
-        if cur_state == PAUSE:
-            gameplay.update(0)
-        elif cur_state == GAME:
-            gameplay.update(delta_time)
-        if should_stop:
+        G_STATE.scene.before_render()
+        input_logic()
+        if G_STATE.cur_state == PAUSE:
+            G_STATE.gameplay.update(0)
+        elif G_STATE.cur_state == GAME:
+            G_STATE.gameplay.update(delta_time)
+        if G_STATE.should_quit:
             break
-        draw(scene, interface, Camera(pos, dir))
+        draw(G_STATE.scene, G_STATE.interface, Camera(pos, direction))
         pg.display.flip()
-    interface = None
+
+    G_STATE.interface = None
     delete_app_state()
     pg.quit()

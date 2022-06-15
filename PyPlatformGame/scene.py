@@ -45,7 +45,7 @@ class Scene:
     def __init__(self, scene_filename: str):
         """Load scene and save light data."""
         self.elems = []
-        with open(scene_filename, 'r') as file:
+        with open(scene_filename, 'r', encoding='utf-8') as file:
             data = json.load(file)
             self.z_near = float(data['z_near'])
             self.z_far = float(data['z_far'])
@@ -123,9 +123,9 @@ class Scene:
         self.billboard_list.sort(reverse=False,
                     key=lambda billboard: billboard.order)
         app_state().shader_manager.use_program('billboard')
-        blend = GL.glGetBooleanv(GL.GL_BLEND)
-        blend_src = GL.glGetIntegerv(GL.GL_BLEND_SRC_ALPHA)
-        blend_dst = GL.glGetIntegerv(GL.GL_BLEND_DST_ALPHA)
+        prev_blend = GL.glGetBooleanv(GL.GL_BLEND)
+        prev_blend_src = GL.glGetIntegerv(GL.GL_BLEND_SRC_ALPHA)
+        prev_blend_dst = GL.glGetIntegerv(GL.GL_BLEND_DST_ALPHA)
         GL.glEnable(GL.GL_BLEND)
         GL.glDepthFunc(GL.GL_LEQUAL)
         GL.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA)
@@ -135,8 +135,9 @@ class Scene:
             app_state().shader_manager.set_texture('source',
                                     app_state().texture_manager.get(obj.tex_name))
             app_state().mesh_manager.draw_quad()
-        if not blend:
+        if not prev_blend:
             GL.glDisable(GL.GL_BLEND)
         else:
-            GL.glBlendFunc(blend_src, blend_dst)
+            GL.glBlendFunc(prev_blend_src, prev_blend_dst)
         GL.glDepthFunc(GL.GL_LESS)
+    
