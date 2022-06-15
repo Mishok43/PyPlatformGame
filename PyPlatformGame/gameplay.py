@@ -21,6 +21,7 @@ from . import win_manager
 @dataclass
 class GameplayCallbacks:
     """Callbacks for various gameplay events."""
+    attack_sound_callback: Callable
     win_callback: Callable
     camera_callback: Callable
     billboard_render: Callable
@@ -45,7 +46,8 @@ class Gameplay:
         self.world.add_processor(enemy.ControllerProcessor(), priority=9)
         self.world.add_processor(player.DisjointedController(), priority=10)
         self.input_entity = self.world.create_entity(input_data.InputComponent())
-        self.world.add_processor(player.InputProcessor(self.input_entity), priority=11)
+        self.world.add_processor(player.InputProcessor(
+            self.input_entity, clb.attack_sound_callback), priority=11)
 
         with open(level_filename, encoding='utf-8') as file:
             level = json.load(file)

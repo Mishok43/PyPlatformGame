@@ -15,6 +15,7 @@ base_dir = None
 click_sound_handle = None
 kill_sound_handle = None
 die_sound_handle = None
+attack_sound_handle = None
 killed_enemy_count = 0
 MENU = 1
 GAME = 2
@@ -43,6 +44,12 @@ def billboard_render(tex, pos, size, order = 0):
             ),
             (size[0] * h_w, size[1]),
             order)
+
+def attack_sound_callback():
+    global attack_sound_handle
+
+    if attack_sound_handle != -1:
+        AudioManager().play_sound(attack_sound_handle)
 
 def win_callback():
     global cur_state
@@ -96,7 +103,7 @@ def menu_callback():
     killed_enemy_count = 0
     cur_state = MENU
     gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(win_callback, camera_callback, billboard_render,
+            GameplayCallbacks(attack_sound_callback, win_callback, camera_callback, billboard_render,
                 player_death_callback, enemy_death_callback))
 
 def restart_callback():
@@ -106,7 +113,7 @@ def restart_callback():
     killed_enemy_count = 0
     cur_state = GAME
     gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(win_callback, camera_callback, billboard_render,
+            GameplayCallbacks(attack_sound_callback, win_callback, camera_callback, billboard_render,
                 player_death_callback, enemy_death_callback))
 
 def lang_callback_ru():
@@ -134,7 +141,7 @@ def process_keyboard():
         app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
         scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
         gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-            GameplayCallbacks(win_callback, camera_callback, billboard_render,
+            GameplayCallbacks(attack_sound_callback, win_callback, camera_callback, billboard_render,
                 player_death_callback, enemy_death_callback))
     elif keys[pg.K_ESCAPE]:
         cur_state = PAUSE
@@ -160,6 +167,7 @@ def main():
     global click_sound_handle
     global kill_sound_handle
     global die_sound_handle
+    global attack_sound_handle
     global cur_state
     global prev_state
     pg.init()
@@ -175,7 +183,7 @@ def main():
     gameplay = Gameplay(
         os.path.join(base_dir, 'assets', 'level.json'),
         GameplayCallbacks(
-            win_callback, camera_callback, billboard_render,
+            attack_sound_callback, win_callback, camera_callback, billboard_render,
             player_death_callback, enemy_death_callback)
     )
     scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
@@ -192,6 +200,7 @@ def main():
     click_sound_handle = AudioManager().get_sound_handle("click_button.wav")
     die_sound_handle = AudioManager().get_sound_handle("die.wav")
     kill_sound_handle = AudioManager().get_sound_handle("kill.wav")
+    attack_sound_handle = AudioManager().get_sound_handle("attack.wav")
     while True:
         pos = glm.vec3(sin(time * ROTATION_SPEED)*150, 30.0 + sin(time * VERTICAL_SPEED) * 20, cos(time * ROTATION_SPEED)*150)
         dir = glm.normalize(-pos)
