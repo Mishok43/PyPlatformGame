@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-15 22:04+0300\n"
+"POT-Creation-Date: 2022-06-16 02:18+0300\n"
 "PO-Revision-Date: 2022-06-14 01:45+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -36,7 +36,7 @@ msgstr "En"
 
 #: PyPlatformGame/ui_descr.py:40
 msgid "GAME"
-msgstr "GAME"
+msgstr "PyPlatformGame"
 
 #: PyPlatformGame/ui_descr.py:42
 msgid "Language"
