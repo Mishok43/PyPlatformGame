@@ -95,7 +95,7 @@ class RTargetManager:
     """Manager for all existing render targets to avoid manual resource tracking."""
 
     def __init__(self, backbuffer_res: Tuple[int, int]):
-        """Initialize with specified backbuffe resolution."""
+        """Initialize with specified backbuffer resolution."""
         self.framebuffers = []
         self.rtargets = []
         self.dtargets = []

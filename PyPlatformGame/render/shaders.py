@@ -123,14 +123,16 @@ class ShaderManager:
                     GL.glDeleteProgram(program)
                 else:
                     self.programs[name] = Shader(program)
-    def use_program(self, shader_name: str) -> None:
+    def use_program(self, shader_name: str) -> bool:
         """Use shader with specified name."""
         if shader_name in self.programs:
             self.program = shader_name
             self.programs[shader_name].use()
+            return True
         else:
             self.program = None
             print(f'Program {shader_name} not found and cannot be set')
+            return False
     def get_uniform(self, name: str) -> int:
         """Get uniform from currently active shader."""
         if self.program is not None:
