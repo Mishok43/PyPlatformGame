@@ -18,6 +18,7 @@ class DrawOrderComponent:
     order: int
 
     def __init__(self, order: int):
+        """Set draw order."""
         self.order = order
 
 

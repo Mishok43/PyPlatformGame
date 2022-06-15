@@ -21,6 +21,7 @@ from . import win_manager
 @dataclass
 class GameplayCallbacks:
     """Callbacks for various gameplay events."""
+
     win_callback: Callable
     camera_callback: Callable
     billboard_render: Callable

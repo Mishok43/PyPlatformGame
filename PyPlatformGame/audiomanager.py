@@ -154,8 +154,8 @@ class AudioManager(metaclass=Singleton):
         self.sound_volume = volume
 
         for i_s, _ in enumerate(self.sounds):
-            k =  self.sounds_volumes[i_s] if (i_s in self.sounds_volumes) else 1.0
-            self.sounds[i_s].set_volume(k*self.sound_volume)
+            mul =  self.sounds_volumes[i_s] if (i_s in self.sounds_volumes) else 1.0
+            self.sounds[i_s].set_volume(mul*self.sound_volume)
 
     def get_sounds_volume(self) -> float:
         """
