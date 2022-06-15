@@ -160,13 +160,23 @@ def process_state(base_dir: str) -> None:
             G_STATE.interface = game_ui()
             if G_STATE.prev_state != PAUSE:
                 G_STATE.gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
-                    GameplayCallbacks(win_callback, camera_callback, billboard_render,
-                        player_death_callback, enemy_death_callback))
+                    GameplayCallbacks(attack_sound_callback, win_callback, camera_callback,
+                        billboard_render, player_death_callback, enemy_death_callback))
         elif G_STATE.cur_state == RESULTS:
             G_STATE.interface = results_ui(restart_callback, menu_callback,
                                         G_STATE.killed_enemy_count, G_STATE.won)
         G_STATE.prev_state = G_STATE.cur_state
 
+def update_gameplay(delta_time: str, base_dir: str) -> None:
+    """Call gameplay update or reinit it."""
+    if G_STATE.cur_state == GAME and G_STATE.prev_state != PAUSE and G_STATE.prev_state != GAME:
+        G_STATE.gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
+            GameplayCallbacks(attack_sound_callback, win_callback, camera_callback,
+                billboard_render, player_death_callback, enemy_death_callback))
+    if G_STATE.cur_state == PAUSE:
+        G_STATE.gameplay.update(0)
+    elif G_STATE.cur_state == GAME:
+        G_STATE.gameplay.update(delta_time)
 def input_logic() -> None:
     """Process inputs."""
     keys = pg.key.get_pressed()
@@ -184,6 +194,7 @@ def input_logic() -> None:
 
 
 def main() -> None:
+    """Game initialization and main loop."""
     pg.init()
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
@@ -235,10 +246,7 @@ def main() -> None:
         time += delta_time
         G_STATE.scene.before_render()
         input_logic()
-        if G_STATE.cur_state == PAUSE:
-            G_STATE.gameplay.update(0)
-        elif G_STATE.cur_state == GAME:
-            G_STATE.gameplay.update(delta_time)
+        update_gameplay(delta_time, base_dir)
         if G_STATE.should_quit:
             break
         draw(G_STATE.scene, G_STATE.interface, Camera(pos, direction))
