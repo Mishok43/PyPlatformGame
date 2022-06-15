@@ -51,9 +51,12 @@ class Gameplay:
             level = json.load(file)
 
             player_descr = level["player"]
+            player_wobble = player_descr["wobble"]
             self.world.create_entity(aabb.AABBComponent(
                         pos=player_descr["pos"], dim=player_descr["dim"]),
-                    billy.TextureComponent(tex_name=player_descr["texture"]),
+                    billy.TextureComponent(tex_name=player_descr["texture"],
+                        wobble_amplitude=player_wobble["amplitude"],
+                        wobble_acceleration=player_wobble["acceleration"]),
                     billy.DrawOrderComponent(order=2),
                     collision.ActiveCollisionComponent(),
                     velocity.VelocityComponent(direction=(0, 0)),
@@ -64,9 +67,12 @@ class Gameplay:
 
             for enemy_descr in level["enemies"]:
                 motion = enemy_descr["motion"]
+                enemy_wobble = enemy_descr["wobble"]
                 self.world.create_entity(
                     aabb.AABBComponent(pos=enemy_descr["pos"], dim=enemy_descr["dim"]),
-                    billy.TextureComponent(tex_name=enemy_descr["texture"]),
+                    billy.TextureComponent(tex_name=enemy_descr["texture"],
+                        wobble_amplitude=enemy_wobble["amplitude"],
+                        wobble_acceleration=enemy_wobble["acceleration"]),
                     billy.DrawOrderComponent(order=1),
                     collision.ActiveCollisionComponent(),
                     collision.HurtComponent(),

@@ -49,7 +49,7 @@ class ControllerProcessor(esper.Processor):
 
     def process(self, dt: float, *_):
         """Process enemy logic."""
-        for ent, (box, settings, timer, tex) in self.world.get_components(
+        for _, (box, settings, timer, tex) in self.world.get_components(
                 aabb.AABBComponent, SettingsComponent, TimerComponent, billy.TextureComponent):
 
             if not timer.is_set:
@@ -65,6 +65,8 @@ class ControllerProcessor(esper.Processor):
 
             if abs(vel.x) > 0.0001:
                 tex.face_right = vel.x > 0.0
+
+            tex.wobble_time += dt
 
             timer.time -= dt
             if timer.time < 0.0:
