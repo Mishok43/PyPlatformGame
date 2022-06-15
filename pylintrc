@@ -1,6 +1,7 @@
 [MASTER]
 extension-pkg-allow-list=glm, pygame, esper
 additional-builtins=_
+good-names=PyPlatformGame
 [MESSAGE_CONTROL]
 disable=
     too-many-locals,

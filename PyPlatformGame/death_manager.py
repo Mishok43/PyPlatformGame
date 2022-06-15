@@ -19,6 +19,7 @@ class DeathProcessor(esper.Processor):
 
     def __init__(self, player_death_callback: Callable,
                 enemy_death_callback: Callable):
+        """Set callbacks."""
         self.player_death_callback = player_death_callback
         self.enemy_death_callback = enemy_death_callback
     def process(self, *_):

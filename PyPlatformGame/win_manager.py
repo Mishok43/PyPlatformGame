@@ -10,7 +10,9 @@ from . import enemy
 
 class WinProcessor(esper.Processor):
     """Win condition processor for ECS."""
+
     def __init__(self, win_callback: Callable):
+        """Set callback."""
         self.win_callback = win_callback
 
     def process(self, *_):

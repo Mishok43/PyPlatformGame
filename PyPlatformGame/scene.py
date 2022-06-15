@@ -45,7 +45,7 @@ class Scene:
     def __init__(self, scene_filename: str):
         """Load scene and save light data."""
         self.elems = []
-        with open(scene_filename, 'r') as file:
+        with open(scene_filename, 'r', encoding='utf-8') as file:
             data = json.load(file)
             self.z_near = float(data['z_near'])
             self.z_far = float(data['z_far'])
@@ -140,3 +140,4 @@ class Scene:
         else:
             GL.glBlendFunc(prev_blend_src, prev_blend_dst)
         GL.glDepthFunc(GL.GL_LESS)
+    
