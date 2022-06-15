@@ -120,13 +120,14 @@ class Scene:
                                 app_state().texture_manager.get(elem.tex_name))
             app_state().mesh_manager.draw(elem.mesh_name)
         # billboards
-        self.billboard_list.sort(reverse=True,
+        self.billboard_list.sort(reverse=False,
                     key=lambda billboard: billboard.order)
-        app_state().shader_manager.use_program('tex_rect')
+        app_state().shader_manager.use_program('billboard')
         blend = GL.glGetBooleanv(GL.GL_BLEND)
         blend_src = GL.glGetIntegerv(GL.GL_BLEND_SRC_ALPHA)
         blend_dst = GL.glGetIntegerv(GL.GL_BLEND_DST_ALPHA)
         GL.glEnable(GL.GL_BLEND)
+        GL.glDepthFunc(GL.GL_LEQUAL)
         GL.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA)
         for obj in self.billboard_list:
             GL.glUniform4f(app_state().shader_manager.get_uniform('pos_size'),
@@ -138,3 +139,4 @@ class Scene:
             GL.glDisable(GL.GL_BLEND)
         else:
             GL.glBlendFunc(blend_src, blend_dst)
+        GL.glDepthFunc(GL.GL_LESS)
