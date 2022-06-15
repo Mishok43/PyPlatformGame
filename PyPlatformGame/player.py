@@ -76,8 +76,8 @@ class DisjointedController(esper.Processor):
 
     def process(self, dt: float, *_):
         """Process disjointed hurtboxes."""
-        for ent, (box, params) in self.world.get_components(
-                aabb.AABBComponent, DisjointedParamsComponent):
+        for ent, (box, tex, params) in self.world.get_components(
+                aabb.AABBComponent, billy.TextureComponent, DisjointedParamsComponent):
 
             if not self.world.entity_exists(params.host):
                 self.world.delete_entity(ent)
@@ -90,7 +90,7 @@ class DisjointedController(esper.Processor):
                 box.pos = glm.vec2(aabb.extent(host_box).x, aabb.top(host_box))
             else:
                 box.pos = glm.vec2(aabb.left(host_box) - box.dim.x, aabb.top(host_box))
-
+            tex.face_right = state.face_right
             params.time -= dt
             if params.time < 0.0:
                 self.world.delete_entity(ent)
@@ -174,7 +174,7 @@ class InputProcessor(esper.Processor):
                 state.attack_timer = ATTACK_COOLDOWN
 
                 self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(0.07, 0.07)),
-                        billy.TextureComponent(tex_name="cross.png"),
+                        billy.TextureComponent(tex_name="sword.png"),
                         billy.DrawOrderComponent(order=3),
                         collision.ActiveCollisionComponent(),
                         collision.HurtComponent(),
