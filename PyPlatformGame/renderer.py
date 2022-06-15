@@ -11,32 +11,13 @@ def draw(scene : Scene, interface: UI, camera: Camera):
     GL.glClearColor(0.0, 0.0, 0.0, 0.0)
     GL.glClear(GL.GL_DEPTH_BUFFER_BIT|GL.GL_COLOR_BUFFER_BIT)
     scene.render_to_shadow()
-    depth = app_state().rt_manager.get_color(0)
-    app_state().rt_manager.set_linear_filter(depth.get_id())
-    # step 1 of filtering shadows
-    app_state().rt_manager.bind(1024, 1024, [GL.GL_RG32F], False)
-    app_state().shader_manager.use_program('blur')
-    GL.glUniform2f(app_state().shader_manager.get_uniform('offset'), 1.5 / 1024.0, 1.5 / 1024.0)
-    app_state().shader_manager.set_texture('source', depth.get_id())
-    app_state().mesh_manager.draw_fullscreen_triangle()
     depth_filtered = app_state().rt_manager.get_color(0)
     app_state().rt_manager.set_linear_filter(depth_filtered.get_id())
-    depth = None
-    # step 2 of filtering shadows
-    app_state().rt_manager.bind(1024, 1024, [GL.GL_RG32F], False)
-    app_state().shader_manager.use_program('blur')
-    GL.glUniform2f(app_state().shader_manager.get_uniform('offset'), 1.5 / 1024.0, 1.5 / 1024.0)
-    app_state().shader_manager.set_texture('source', depth_filtered.get_id())
-    app_state().mesh_manager.draw_fullscreen_triangle()
-    depth_filtered2 = app_state().rt_manager.get_color(0)
-    app_state().rt_manager.set_linear_filter(depth_filtered2.get_id())
-    depth_filtered = None
-    # render scene to intermeiate target
     app_state().rt_manager.bind(*app_state().screen_res, [GL.GL_RGBA8], True)
     GL.glClearColor(0.3,0.3,0.6,0)
     GL.glClear(GL.GL_COLOR_BUFFER_BIT|GL.GL_DEPTH_BUFFER_BIT)
-    scene.render(camera, depth_filtered2.get_id())
-    depth_filtered2 = None
+    scene.render(camera, depth_filtered.get_id())
+    depth_filtered = None
     result = app_state().rt_manager.get_color(0)
     depth = app_state().rt_manager.get_depth()
     app_state().rt_manager.set_linear_filter(result.get_id())
@@ -95,7 +76,7 @@ def draw(scene : Scene, interface: UI, camera: Camera):
     # combine everything and render to screen
     app_state().rt_manager.bind_fb0()
     app_state().shader_manager.use_program('resolve')
-    GL.glUniform2f(app_state().shader_manager.get_uniform('far_dof_range'), 0.85, 0.9)
+    GL.glUniform2f(app_state().shader_manager.get_uniform('far_dof_range'), 0.9, 0.95)
     app_state().shader_manager.set_texture('source', result.get_id())
     app_state().shader_manager.set_texture('source_blurred', result_blurred.get_id())
     app_state().shader_manager.set_texture('depth', depth.get_id())

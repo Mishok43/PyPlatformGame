@@ -55,7 +55,7 @@ class Scene:
             light_pos = data["light_pos"]
             light_dir = data["light_dir"]
             self.light = Light(glm.vec3(light_pos[0], light_pos[1], light_pos[2]),
-                                glm.vec3(light_dir[0], light_dir[1], light_dir[2]))
+                                glm.normalize(glm.vec3(light_dir[0], light_dir[1], light_dir[2])))
             scene = data['scene']
             for obj in scene:
                 mesh_name = obj['mesh_name']
@@ -116,8 +116,8 @@ class Scene:
                             elem.y_rotation, glm.vec3(0,1,0))
             GL.glUniformMatrix4fv(app_state().shader_manager.get_uniform('M'),
                                 1, GL.GL_FALSE, glm.value_ptr(matrix))
-            # app_state().shader_manager.set_texture('color_tex',
-            #                     app_state().texture_manager.get(elem.tex_name))
+            app_state().shader_manager.set_texture('color_tex',
+                                app_state().texture_manager.get(elem.tex_name))
             app_state().mesh_manager.draw(elem.mesh_name)
         # billboards
         self.billboard_list.sort(reverse=True,

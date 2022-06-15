@@ -119,39 +119,12 @@ def lang_callback_en():
 
 lang_callback_en()
 
-pos = glm.vec3(0.0, 0.0, 0.0)
-dir = glm.vec3(0.0, 0.0, -1.0)
-x_rot = 0
-y_rot = 0
-mouse_x = None
-mouse_y = None
-def process_mouse():
-    x, y = pg.mouse.get_pos()
-    global mouse_x
-    global mouse_y
-    if (mouse_x is not None) and (mouse_y is not None):
-        delta_x = x - mouse_x
-        delta_y = y - mouse_y
-        global x_rot
-        global y_rot
-        x_rot -= delta_x * 0.01
-        y_rot -= delta_y * 0.01
-    global dir
-    dir = glm.vec3(sin(x_rot) * cos(y_rot), sin(y_rot), cos(x_rot) * cos(y_rot))
-    mouse_x = x
-    mouse_y = y
-
 def process_keyboard():
     global cur_state
     global scene
     global gameplay
-    global pos
     keys = pg.key.get_pressed()
-    if keys[pg.K_e]:
-        pos += dir * 0.001
-    elif keys[pg.K_q]:
-        pos -= dir * 0.001
-    elif keys[pg.K_r]:
+    if keys[pg.K_r]:
         app_state().shader_manager = ShaderManager(os.path.join(base_dir, 'shaders'))
         scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
         gameplay = Gameplay(os.path.join(base_dir, 'assets', 'level.json'),
@@ -163,7 +136,6 @@ def logic():
     global should_stop
     if cur_state == GAME:
         process_keyboard()
-        process_mouse()
     for s in interface.sliders:
         s.process_input()
     for e in pg.event.get():
@@ -199,6 +171,9 @@ def main():
             camera_callback, billboard_render, player_death_callback, enemy_death_callback)
     )
     scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
+    time = 0
+    ROTATION_SPEED = 0.3
+    VERTICAL_SPEED = 0.5
     clock = pg.time.Clock()
     FPS = 60
 
@@ -210,6 +185,8 @@ def main():
     die_sound_handle = AudioManager().get_sound_handle("die.wav")
     kill_sound_handle = AudioManager().get_sound_handle("kill.wav")
     while True:
+        pos = glm.vec3(sin(time * ROTATION_SPEED)*150, 30.0 + sin(time * VERTICAL_SPEED) * 20, cos(time * ROTATION_SPEED)*150)
+        dir = glm.normalize(-pos)
         if cur_state != prev_state:
             if cur_state == MENU:
                 interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()), (lang_callback_ru, lang_callback_en))
@@ -221,6 +198,7 @@ def main():
                 interface = results_ui(restart_callback, menu_callback, killed_enemy_count)
             prev_state = cur_state
         delta_time = clock.tick(FPS) / 1000
+        time += delta_time
         scene.before_render()
         logic()
         gameplay.process_input()
