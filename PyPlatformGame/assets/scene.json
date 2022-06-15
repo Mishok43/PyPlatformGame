@@ -1,8 +1,74 @@
 {
     "scene": [
         {
-            "mesh_name": "bunny.obj",
-            "tex_name": "test.png",
+            "mesh_name": "ground.obj",
+            "tex_name": "ground.png",
+            "transforms": [
+                {
+                    "position": [0, 0, 0],
+                    "scale": [1, 1, 1],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "house1.obj",
+            "tex_name": "house1.png",
+            "transforms": [
+                {
+                    "position": [0, 0, 0],
+                    "scale": [1, 1, 1],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "house2.obj",
+            "tex_name": "house2.png",
+            "transforms": [
+                {
+                    "position": [0, 0, 0],
+                    "scale": [1, 1, 1],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "house3.obj",
+            "tex_name": "house3.png",
+            "transforms": [
+                {
+                    "position": [0, 0, 0],
+                    "scale": [1, 1, 1],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "towers.obj",
+            "tex_name": "tower.png",
+            "transforms": [
+                {
+                    "position": [0, 0, 0],
+                    "scale": [1, 1, 1],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "rocks.obj",
+            "tex_name": "rock2.png",
+            "transforms": [
+                {
+                    "position": [0, 0, 0],
+                    "scale": [1, 1, 1],
+                    "y_rotation": 0
+                }
+            ]
+        },
+        {
+            "mesh_name": "lamps.obj",
+            "tex_name": "lamp.png",
             "transforms": [
                 {
                     "position": [0, 0, 0],
@@ -12,11 +78,11 @@
             ]
         }
     ],
-    "z_near": 0.01,
-    "z_far": 10.0,
-    "shadow_z_near": 0.01,
-    "shadow_z_far": 1.0,
-    "shadow_fov": 0.1,
-    "light_pos": [-0.138, 0.158, 0.074],
-    "light_dir": [0.615, -0.627, -0.478]
+    "z_near": 10,
+    "z_far": 1000.0,
+    "shadow_z_near": 100,
+    "shadow_z_far": 2000.0,
+    "shadow_fov": 500,
+    "light_pos": [400, 600, 400],
+    "light_dir": [-4, -6, -4]
 }

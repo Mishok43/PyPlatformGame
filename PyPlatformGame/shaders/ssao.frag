@@ -9,7 +9,7 @@ const float PI = 3.1415926535897931;
 
 void main() {
     float depth = texture(depthTex, texcoords).r;
-    float r = 0.005 / depth;
+    float r = 0.0025 / depth;
     vec3 k = vec3(1.0, 0.75, 0.5);
     float res = 0.0f;
     for (int i = 0; i < 2; i++)

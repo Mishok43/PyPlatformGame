@@ -1,6 +1,7 @@
 #version 410 core
 
 uniform sampler2D shadow;
+uniform sampler2D color_tex;
 uniform vec3 lightPos;
 
 in vec3 nrml;
@@ -22,7 +23,7 @@ float vsm(vec2 sampled, float d)
     float v = max(0.0, sampled.y - sampled.x*sampled.x); 
     float dif = d - sampled.x;   
     float p_max = v / (v + dif*dif);
-    return max(p, linstep(0.85, 1, p_max));
+    return max(p, linstep(0.3, 1, p_max));
 }
 
 void main()
@@ -31,6 +32,7 @@ void main()
     vec2 shadowDepth = texture(shadow, lcrd.xy * 0.5 + 0.5).rg;
     float realDepth = lightCrd.z;
     vec3 lightDir = lightPos - p;
-    color = vec4(0.3) + clamp(dot(normalize(lightDir), nrml), 0.0, 1.0);
-    color *= (0.2 + 0.8 * vsm(shadowDepth, realDepth));
+    color = texture(color_tex, vec2(tcrd.x, 1.0 - tcrd.y));
+    color *= vec4(0.3) + clamp(dot(normalize(lightDir), nrml), 0.0, 1.0);
+    color *= (0.4 + 0.6 * vsm(shadowDepth, realDepth));
 }
