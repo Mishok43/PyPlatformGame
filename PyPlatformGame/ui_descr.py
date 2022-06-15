@@ -70,7 +70,7 @@ def pause_ui(continue_callback: Callable, menu_callback: Callable, music_callbac
         ]
     )
 
-def results_ui(restart_callback: Callable, menu_callback: Callable, killed_enemy_count: int) -> UI:
+def results_ui(restart_callback: Callable, menu_callback: Callable, killed_enemy_count: int, won: bool) -> UI:
     """Create ui for pause menu."""
     button_descr = ButtonDescr()
     buttons_font = int(80 / 1280 * app_state().screen_res[0])
@@ -84,6 +84,8 @@ def results_ui(restart_callback: Callable, menu_callback: Callable, killed_enemy
         ],
         [],
         [
+            (TextRect(_('YOU WON!!!'), pg.font.SysFont('arial', result_font), (0, 255, 0, 255)), 0.5, 0.15)
+                if won else
             (TextRect(_('YOU LOST!!!'), pg.font.SysFont('arial', result_font), (255, 0, 0, 255)), 0.5, 0.15),
             (TextRect(_('ENEMIES KILLED: {}').format(killed_enemy_count),
                     pg.font.SysFont('arial', result_font), (0, 0, 0, 255)), 0.5, 0.35),

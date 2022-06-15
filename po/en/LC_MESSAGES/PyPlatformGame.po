@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-15 00:50+0300\n"
+"POT-Creation-Date: 2022-06-15 20:36+0300\n"
 "PO-Revision-Date: 2022-06-14 01:45+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -67,10 +67,14 @@ msgid "Restart"
 msgstr "Restart"
 
 #: PyPlatformGame/ui_descr.py:87
+msgid "YOU WON!!!"
+msgstr "YOU WON!!!"
+
+#: PyPlatformGame/ui_descr.py:89
 msgid "YOU LOST!!!"
 msgstr "YOU LOST!!!"
 
-#: PyPlatformGame/ui_descr.py:88
+#: PyPlatformGame/ui_descr.py:90
 msgid "ENEMIES KILLED: {}"
 msgstr "ENEMIES KILLED: {}"
 

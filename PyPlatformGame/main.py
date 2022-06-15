@@ -26,6 +26,7 @@ should_stop = False
 scene = None
 gameplay = None
 interface = None
+won = False
 cur_screen = [0, 0]
 
 def sound_callback(l: float):
@@ -46,6 +47,8 @@ def billboard_render(tex, pos, size, order = 0):
 
 def win_callback():
     global cur_state
+    global won
+    won = True
     cur_state = RESULTS
 
 def camera_callback(pos):
@@ -70,6 +73,8 @@ def player_death_callback():
         AudioManager().play_sound(die_sound_handle)
 
     global cur_state
+    global won
+    won = False
     cur_state = RESULTS
 
 def exit_callback():
@@ -210,7 +215,7 @@ def main():
             elif cur_state == GAME:
                 interface = game_ui()
             elif cur_state == RESULTS:
-                interface = results_ui(restart_callback, menu_callback, killed_enemy_count)
+                interface = results_ui(restart_callback, menu_callback, killed_enemy_count, won)
             prev_state = cur_state
         delta_time = clock.tick(FPS) / 1000
         time += delta_time
