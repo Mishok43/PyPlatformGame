@@ -55,7 +55,6 @@ class ControllerProcessor(esper.Processor):
             if not timer.is_set:
                 timer.time = settings.mirror_time
                 timer.is_set = True
-                self.world.add_component(ent, timer)
                 continue
 
             vel = settings.direction * glm.vec2(dt)
@@ -67,13 +66,7 @@ class ControllerProcessor(esper.Processor):
             if abs(vel.x) > 0.0001:
                 tex.face_right = vel.x > 0.0
 
-            self.world.add_component(ent, box)
-            self.world.add_component(ent, tex)
-
             timer.time -= dt
             if timer.time < 0.0:
                 timer.time = settings.mirror_time
-                self.world.add_component(ent, timer)
-
                 settings.mirror_state = not settings.mirror_state
-                self.world.add_component(ent, settings)

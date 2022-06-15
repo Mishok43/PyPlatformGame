@@ -34,4 +34,3 @@ class GravityProcessor(esper.Processor):
 
             vel.direction += glm.vec2(0.0, grav.force) * DT_COMPENSATOR * dt
             vel.direction.y = min(vel.direction.y, grav.force * MAX_MODIFIER)
-            self.world.add_component(ent, vel)
