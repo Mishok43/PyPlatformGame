@@ -163,7 +163,7 @@ class InputProcessor(esper.Processor):
                 self.world.add_component(ent, state)
 
                 self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(0.07, 0.07)),
-                        billy.TextureComponent(tex_name="test.png"),
+                        billy.TextureComponent(tex_name="cross.png"),
                         billy.DrawOrderComponent(order=3),
                         collision.ActiveCollisionComponent(),
                         collision.HurtComponent(),

@@ -1,12 +1,12 @@
 {
     "player": {
-        "texture": "test.png",
+        "texture": "player.png",
         "pos": [0.333, 0.333],
         "dim": [0.0833, 0.0833]
     },
     "enemies": [
         {
-            "texture": "test.png",
+            "texture": "slime.png",
             "pos": [0.8333, 0.5],
             "dim": [0.0833, 0.1667],
             "motion": {
@@ -16,7 +16,7 @@
             }
         },
         {
-            "texture": "test.png",
+            "texture": "bee.png",
             "pos": [0.0833, 0.0833],
             "dim": [0.24, 0.1667],
             "motion": {
@@ -28,12 +28,12 @@
     ],
     "platforms": [
         {
-            "texture": "test.png",
+            "texture": "platform.png",
             "pos": [0.6667, 0.6667],
             "dim": [1, 0.0333]
         },
         {
-            "texture": "test.png",
+            "texture": "platform.png",
             "pos": [0, 0.9667],
             "dim": [1, 0.0333]
         }
