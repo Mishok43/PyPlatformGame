@@ -246,6 +246,9 @@ def main() -> None:
         time += delta_time
         G_STATE.scene.before_render()
         input_logic()
+        keys = pg.key.get_pressed()
+        if keys[pg.K_r]:
+            G_STATE.scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
         update_gameplay(delta_time, base_dir)
         if G_STATE.should_quit:
             break

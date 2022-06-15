@@ -107,9 +107,9 @@ class ButtonDescr:
     border_size: float = 0.01
     frame_size: float = 0.003
     corner_r: float = 0.008
-    background_color: Tuple[float, float, float] = (0.7, 0.7, 0.7)
-    frame_color: Tuple[float, float, float] = (0.3, 0.3, 0.3)
-    pressed_color: Tuple[float, float, float]  = (0.5, 0.5, 0.5)
+    background_color: Tuple[float, float, float] = (0.9, 0.9, 0.6)
+    frame_color: Tuple[float, float, float] = (0.5, 0.5, 0.3)
+    pressed_color: Tuple[float, float, float]  = (0.7, 0.7, 0.4)
 
 class Button:
     """GUI button. Supports both rendering and user interaction."""
@@ -177,8 +177,8 @@ class SliderDescr:
 
     frame_size: float = 0.003
     corner_r: float = 0.008
-    background_color: Tuple[float, float, float] = (0.7, 0.7, 0.7)
-    frame_color: Tuple[float, float, float] = (0.3, 0.3, 0.3)
+    background_color: Tuple[float, float, float] = (0.9, 0.9, 0.6)
+    frame_color: Tuple[float, float, float] = (0.5, 0.5, 0.3)
     size: Tuple[float, float] = (0.5, 0.05)
     inner_fract: Tuple[float, float] = (0.25, 3.0)
 

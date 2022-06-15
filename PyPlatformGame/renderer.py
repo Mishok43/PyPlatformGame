@@ -14,7 +14,7 @@ def draw(scene : Scene, interface: UI, camera: Camera):
     depth_filtered = app_state().rt_manager.get_color(0)
     app_state().rt_manager.set_linear_filter(depth_filtered.get_id())
     app_state().rt_manager.bind(*app_state().screen_res, [GL.GL_RGBA8], True)
-    GL.glClearColor(0.3,0.3,0.6,0)
+    GL.glClearColor(126/255,206/255,234/255,0)
     GL.glClear(GL.GL_COLOR_BUFFER_BIT|GL.GL_DEPTH_BUFFER_BIT)
     scene.render(camera, depth_filtered.get_id())
     depth_filtered = None
