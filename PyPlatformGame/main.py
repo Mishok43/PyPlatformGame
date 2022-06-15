@@ -13,6 +13,7 @@ from .renderer import draw
 from .gameplay import Gameplay, GameplayCallbacks
 from .audiomanager import AudioManager
 
+
 FPS: int = 60
 MENU: int = 1
 GAME: int = 2
@@ -38,6 +39,7 @@ class GameState:
     click_sound_handle: int = None
     kill_sound_handle: int = None
     die_sound_handle: int = None
+    attack_sound_handle: int = None
 
     scene: Scene = None
     gameplay: Gameplay = None
@@ -66,6 +68,11 @@ def billboard_render(tex: str, pos: glm.vec2, size: glm.vec2, order: int = 0) ->
             ),
             (size[0] * h_w, size[1]),
             order)
+
+def attack_sound_callback():
+    """Play attack sound."""
+    if G_STATE.attack_sound_handle != -1:
+        AudioManager().play_sound(G_STATE.attack_sound_handle)
 
 def win_callback() -> None:
     """Prepare to showq won game screen."""
@@ -163,7 +170,7 @@ def process_state(base_dir: str) -> None:
 def input_logic() -> None:
     """Process inputs."""
     keys = pg.key.get_pressed()
-    if keys[pg.K_ESCAPE]:
+    if keys[pg.K_ESCAPE] and G_STATE.cur_state == GAME:
         G_STATE.cur_state = PAUSE
     for slider in G_STATE.interface.sliders:
         slider.process_input()
@@ -177,7 +184,6 @@ def input_logic() -> None:
 
 
 def main() -> None:
-    """Game initialization and main loop."""
     pg.init()
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
@@ -193,7 +199,7 @@ def main() -> None:
     G_STATE.gameplay = Gameplay(
         os.path.join(base_dir, 'assets', 'level.json'),
         GameplayCallbacks(
-            win_callback, camera_callback, billboard_render,
+            attack_sound_callback, win_callback, camera_callback, billboard_render,
             player_death_callback, enemy_death_callback)
     )
     G_STATE.scene = Scene(os.path.join(base_dir, 'assets', 'scene.json'))
@@ -206,6 +212,7 @@ def main() -> None:
     G_STATE.click_sound_handle = AudioManager().get_sound_handle("click_button.wav")
     G_STATE.die_sound_handle = AudioManager().get_sound_handle("die.wav")
     G_STATE.kill_sound_handle = AudioManager().get_sound_handle("kill.wav")
+    G_STATE.attack_sound_handle = AudioManager().get_sound_handle("attack.wav")
 
     time = 0
     clock = pg.time.Clock()

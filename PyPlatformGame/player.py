@@ -2,10 +2,12 @@
 
 
 from dataclasses import dataclass
+from typing import Callable
 
 import esper
 import glm
 
+from .audiomanager import AudioManager
 from .physics import aabb
 from .physics import velocity
 from .physics import collision
@@ -16,6 +18,8 @@ from . import billboard_renderer as billy
 
 PLAYER_SPEED = 0.625
 JUMP_MULTIPLIER = 0.00833
+ATTACK_COOLDOWN = 0.6
+ATTACK_ACTIVE_TIME = 0.3
 
 
 class PhysicsProcessor(esper.Processor):
@@ -101,21 +105,24 @@ class StateComponent:
     face_right: bool
     has_disjointed: bool
     attack_held: bool
+    attack_timer: float
 
     def __init__(self):
         """Initialize player state component."""
         self.face_right = True
         self.has_disjointed = False
         self.attack_held = False
+        self.attack_timer = -1.0
 
 
 class InputProcessor(esper.Processor):
     """Player input processor for ECS."""
 
-    def __init__(self, input_entity: int):
+    def __init__(self, input_entity: int, attack_sound_callback: Callable):
         """Initialize player input processor."""
         self.input_entity = input_entity
         self.jump_held = False
+        self.attack_sound_callback = attack_sound_callback
 
     def process(self, dt: float, *_):
         """Process player input."""
@@ -158,15 +165,20 @@ class InputProcessor(esper.Processor):
             vel_new = velocity.VelocityComponent(direction=glm.vec2(vel_h, vel_v))
             self.world.add_component(ent, vel_new)
 
+            state.attack_timer = max(state.attack_timer - dt, -1.0)
+
             if not input_component.attack:
                 state.attack_held = False
-            elif not state.has_disjointed and not state.attack_held:
+            elif not state.has_disjointed and not state.attack_held and state.attack_timer < 0.0:
                 state.has_disjointed = True
                 state.attack_held = True
+                state.attack_timer = ATTACK_COOLDOWN
 
                 self.world.create_entity(aabb.AABBComponent(pos=(0, 0), dim=(0.07, 0.07)),
                         billy.TextureComponent(tex_name="cross.png"),
                         billy.DrawOrderComponent(order=3),
                         collision.ActiveCollisionComponent(),
                         collision.HurtComponent(),
-                        DisjointedParamsComponent(time=0.2, host=ent))
+                        DisjointedParamsComponent(time=ATTACK_ACTIVE_TIME, host=ent))
+
+                self.attack_sound_callback()
