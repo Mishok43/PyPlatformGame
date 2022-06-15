@@ -16,10 +16,12 @@ from . import player
 from . import enemy
 from . import camera
 from . import death_manager
+from . import win_manager
 
 @dataclass
 class GameplayCallbacks:
     """Callbacks for various gameplay events."""
+    win_callback: Callable
     camera_callback: Callable
     billboard_render: Callable
     player_death: Callable
@@ -31,18 +33,19 @@ class Gameplay:
     def __init__(self, level_filename: str, clb: GameplayCallbacks):
         """Load description of level from JSON file."""
         self.world = esper.World()
-        self.world.add_processor(camera.CameraProcessor(clb.camera_callback), priority=1)
-        self.world.add_processor(billy.RenderProcessor(clb.billboard_render), priority=2)
-        self.world.add_processor(player.PhysicsProcessor(), priority=3)
+        self.world.add_processor(win_manager.WinProcessor(clb.win_callback), priority=1)
+        self.world.add_processor(camera.CameraProcessor(clb.camera_callback), priority=2)
+        self.world.add_processor(billy.RenderProcessor(clb.billboard_render), priority=3)
+        self.world.add_processor(player.PhysicsProcessor(), priority=4)
         self.world.add_processor(death_manager.DeathProcessor(clb.player_death,
-                                                clb.enemy_death), priority=4)
-        self.world.add_processor(collision.CollisionProcessor(), priority=5)
-        self.world.add_processor(ceiling_bump.CeilingBumpProcessor(), priority=6)
-        self.world.add_processor(gravity.GravityProcessor(), priority=7)
-        self.world.add_processor(enemy.ControllerProcessor(), priority=8)
-        self.world.add_processor(player.DisjointedController(), priority=9)
+                                                clb.enemy_death), priority=5)
+        self.world.add_processor(collision.CollisionProcessor(), priority=6)
+        self.world.add_processor(ceiling_bump.CeilingBumpProcessor(), priority=7)
+        self.world.add_processor(gravity.GravityProcessor(), priority=8)
+        self.world.add_processor(enemy.ControllerProcessor(), priority=9)
+        self.world.add_processor(player.DisjointedController(), priority=10)
         self.input_entity = self.world.create_entity(input_data.InputComponent())
-        self.world.add_processor(player.InputProcessor(self.input_entity), priority=10)
+        self.world.add_processor(player.InputProcessor(self.input_entity), priority=11)
 
         with open(level_filename, encoding='utf-8') as file:
             level = json.load(file)
