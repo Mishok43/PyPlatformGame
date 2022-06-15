@@ -1,0 +1,12 @@
+[MASTER]
+extension-pkg-allow-list=glm, pygame, esper
+additional-builtins=_
+[MESSAGE_CONTROL]
+disable=
+    too-many-locals,
+    too-few-public-methods,
+    too-many-statements,
+    too-many-instance-attributes,
+    no-member, #for esper, as it declared world as _Any
+    arguments-differ, #for esper
+    global-statement

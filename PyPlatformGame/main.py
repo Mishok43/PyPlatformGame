@@ -182,6 +182,8 @@ def main():
     time = 0
     ROTATION_SPEED = 0.3
     VERTICAL_SPEED = 0.5
+    ROTATION_SCALE = 1
+    VERTICAL_SCALE = 10
     clock = pg.time.Clock()
     FPS = 60
 
@@ -193,8 +195,13 @@ def main():
     die_sound_handle = AudioManager().get_sound_handle("die.wav")
     kill_sound_handle = AudioManager().get_sound_handle("kill.wav")
     while True:
-        pos = glm.vec3(sin(time * ROTATION_SPEED)*150, 30.0 + sin(time * VERTICAL_SPEED) * 20, cos(time * ROTATION_SPEED)*150)
-        dir = glm.normalize(-pos)
+        if cur_state == MENU:
+            pos = glm.vec3(sin(time * ROTATION_SPEED)*150, 30.0 + sin(time * VERTICAL_SPEED) * 20, cos(time * ROTATION_SPEED)*150)
+            dir = glm.normalize(-pos)
+        else:
+            pos = glm.vec3(sin(cur_screen[0] * ROTATION_SCALE)*150, 30.0 + max(0, min(20, cur_screen[1] * VERTICAL_SCALE)), cos(cur_screen[0] * ROTATION_SCALE)*150)
+            dir = glm.normalize(-pos)
+
         if cur_state != prev_state:
             if cur_state == MENU:
                 interface = menu_ui(play_callback, exit_callback, music_callback, sound_callback, (AudioManager().get_background_volume(), AudioManager().get_sounds_volume()), (lang_callback_ru, lang_callback_en))

@@ -16,6 +16,7 @@ class InvincibilityComponent:
 
 class DeathProcessor(esper.Processor):
     """Death processor for ECS."""
+
     def __init__(self, player_death_callback: Callable,
                 enemy_death_callback: Callable):
         self.player_death_callback = player_death_callback
