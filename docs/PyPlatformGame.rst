@@ -12,14 +12,6 @@ PyPlatformGame.app\_state module
    :undoc-members:
    :show-inheritance:
 
-PyPlatformGame.audio\_test module
----------------------------------
-
-.. automodule:: PyPlatformGame.audio_test
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 PyPlatformGame.audiomanager module
 ----------------------------------
 
@@ -32,6 +24,14 @@ PyPlatformGame.billboard\_renderer module
 -----------------------------------------
 
 .. automodule:: PyPlatformGame.billboard_renderer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+PyPlatformGame.camera module
+----------------------------
+
+.. automodule:: PyPlatformGame.camera
    :members:
    :undoc-members:
    :show-inheritance:
@@ -76,6 +76,14 @@ PyPlatformGame.input\_data module
    :undoc-members:
    :show-inheritance:
 
+PyPlatformGame.main module
+--------------------------
+
+.. automodule:: PyPlatformGame.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 PyPlatformGame.player module
 ----------------------------
 
@@ -100,10 +108,26 @@ PyPlatformGame.scene module
    :undoc-members:
    :show-inheritance:
 
+PyPlatformGame.singleton module
+-------------------------------
+
+.. automodule:: PyPlatformGame.singleton
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 PyPlatformGame.ui\_descr module
 -------------------------------
 
 .. automodule:: PyPlatformGame.ui_descr
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+PyPlatformGame.win\_manager module
+----------------------------------
+
+.. automodule:: PyPlatformGame.win_manager
    :members:
    :undoc-members:
    :show-inheritance:
