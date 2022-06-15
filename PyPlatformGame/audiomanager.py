@@ -108,7 +108,7 @@ class AudioManager(metaclass=Singleton):
         """
         return self.play_sound(self.get_sound_handle(filename), volume)
 
-    def play_background_music(self, filename: str , loop: int=-1):
+    def play_background_music(self, filename: str , loop: int=-1, volume: float=0.5):
         """
         Will load a music file object and prepare it for playback.
 
@@ -117,9 +117,11 @@ class AudioManager(metaclass=Singleton):
 
         :param filename: music filename
         :param loop: number of iterations for playing. -1 = endlessly
+        :param volume: background volume
         """
         mixer.music.load(os.path.join(self.music_folder_dir,filename))
         mixer.music.play(loop)
+        mixer.music.set_volume(volume)
 
 
     def stop_background_music(self):

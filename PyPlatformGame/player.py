@@ -16,7 +16,7 @@ from . import billboard_renderer as billy
 
 
 PLAYER_SPEED = 0.625
-JUMP_MULTIPLIER = 0.00833
+JUMP_MULTIPLIER = 0.00693
 ATTACK_COOLDOWN = 0.6
 ATTACK_ACTIVE_TIME = 0.3
 
