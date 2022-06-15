@@ -6,8 +6,8 @@ import esper
 import glm
 
 
-from .physics import velocity
-from .physics import gravity
+from PyPlatformGame.physics import velocity
+from PyPlatformGame.physics import gravity
 
 
 class GravityTest(unittest.TestCase):

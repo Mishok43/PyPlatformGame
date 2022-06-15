@@ -2,8 +2,8 @@
 
 import unittest
 import glm
-from .physics import aabb
-from .physics import velocity
+from PyPlatformGame.physics import aabb
+from PyPlatformGame.physics import velocity
 
 
 
@@ -11,7 +11,7 @@ class AABBTest(unittest.TestCase):
     """Test class for validating AABB."""
 
     def test_constructing(self):
-        """Checking initilization paramters of AABBO."""
+        """Checking initilization paramters of AABBs."""
         box = aabb.AABBComponent([-1, -2], [4, 3])
 
         self.assertEqual(aabb.left(box), -1.0)

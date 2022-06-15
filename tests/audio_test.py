@@ -4,7 +4,7 @@ import os
 import unittest
 import pygame
 
-from .audiomanager import AudioManager
+from PyPlatformGame.audiomanager import AudioManager
 
 
 class AudioManagerTest(unittest.TestCase):
@@ -12,8 +12,7 @@ class AudioManagerTest(unittest.TestCase):
 
     def setup_audiomanager(self):
         """Setuping audiomanager before testing."""
-        base_dir = os.path.dirname(__file__)
-        sounds_folder  = os.path.join(base_dir, 'assets', 'testsounds')
+        sounds_folder  = os.path.join('PyPlatformGame', 'assets', 'testsounds')
         AudioManager().init_sounds(sounds_folder, "")
 
     def test_loading(self):
