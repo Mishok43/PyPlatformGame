@@ -52,10 +52,6 @@ class Scene:
             self.shadow_z_near = float(data['shadow_z_near'])
             self.shadow_z_far = float(data['shadow_z_far'])
             self.shadow_fov = float(data['shadow_fov'])
-            light_pos = data["light_pos"]
-            light_dir = data["light_dir"]
-            self.light = Light(glm.vec3(light_pos[0], light_pos[1], light_pos[2]),
-                                glm.normalize(glm.vec3(light_dir[0], light_dir[1], light_dir[2])))
             scene = data['scene']
             for obj in scene:
                 mesh_name = obj['mesh_name']
@@ -77,9 +73,9 @@ class Scene:
                     size: Tuple[float, float], order: int) -> None:
         """Add billboard object to be rendered on current frame."""
         self.billboard_list.append(Billboard(name, pos, size, order))
-    def render_to_shadow(self):
+    def render_to_shadow(self, light: Light):
         """Render all needed parts to shadow map texture."""
-        light_v = glm.lookAt(self.light.pos, self.light.pos + self.light.dir, glm.vec3(0,1,0))
+        light_v = glm.lookAt(light.pos, light.pos + light.dir, glm.vec3(0,1,0))
         s_fov = self.shadow_fov
         light_p = glm.ortho(-s_fov, s_fov, -s_fov, s_fov, self.shadow_z_near, self.shadow_z_far)
         light_vp = light_p * light_v
@@ -92,13 +88,13 @@ class Scene:
             GL.glUniformMatrix4fv(app_state().shader_manager.get_uniform('M'),
                                 1, GL.GL_FALSE, glm.value_ptr(matrix))
             app_state().mesh_manager.draw(elem.mesh_name)
-    def render(self, camera: Camera, shadow_tex_id: int):
+    def render(self, camera: Camera, light: Light, shadow_tex_id: int):
         """Render full scene for main pass."""
         # 3d scene elements
         projection = glm.perspective(45.0, app_state().screen_res[0] / app_state().screen_res[1],
                                     self.z_near, self.z_far)
         view = glm.lookAt(camera.pos, camera.pos + camera.dir, glm.vec3(0,1,0))
-        light_v = glm.lookAt(self.light.pos, self.light.pos + self.light.dir, glm.vec3(0,1,0))
+        light_v = glm.lookAt(light.pos, light.pos + light.dir, glm.vec3(0,1,0))
         s_fov = self.shadow_fov
         light_p = glm.ortho(-s_fov, s_fov, -s_fov, s_fov, self.shadow_z_near, self.shadow_z_far)
         light_vp = light_p * light_v
@@ -110,7 +106,7 @@ class Scene:
         GL.glUniformMatrix4fv(app_state().shader_manager.get_uniform('lightVP'),
                                 1, GL.GL_FALSE, glm.value_ptr(light_vp))
         GL.glUniform3fv(app_state().shader_manager.get_uniform('lightPos'),
-                                1, glm.value_ptr(self.light.pos))
+                                1, glm.value_ptr(light.pos))
         for elem in self.elems:
             matrix = glm.rotate(glm.scale(glm.translate(glm.mat4(1), elem.pos), elem.scale),
                             elem.y_rotation, glm.vec3(0,1,0))

@@ -203,7 +203,5 @@
     "z_far": 1000.0,
     "shadow_z_near": 100,
     "shadow_z_far": 2000.0,
-    "shadow_fov": 500,
-    "light_pos": [400, 600, 400],
-    "light_dir": [-4, -6, -4]
+    "shadow_fov": 300
 }

@@ -8,7 +8,7 @@ import pygame as pg
 import glm
 from .app_state import app_state, init_app_state, delete_app_state
 from .ui_descr import menu_ui, pause_ui, game_ui, results_ui, UI
-from .scene import Scene, Camera
+from .scene import Scene, Camera, Light
 from .renderer import draw
 from .gameplay import Gameplay, GameplayCallbacks
 from .audiomanager import AudioManager
@@ -241,6 +241,11 @@ def main() -> None:
                 30.0 + max(0, min(20, G_STATE.screen_y * VERTICAL_SCALE)),
                 cos(G_STATE.screen_x * ROTATION_SCALE)*150)
             direction = glm.normalize(-pos)
+        light_pos = glm.vec3(
+                sin(time * ROTATION_SPEED * 0.25)*400,
+                600,
+                cos(time * ROTATION_SPEED * 0.25)*400)
+        light_dir = glm.normalize(-light_pos)
         process_state(base_dir)
         delta_time = clock.tick(FPS) / 1000
         time += delta_time
@@ -252,7 +257,8 @@ def main() -> None:
         update_gameplay(delta_time, base_dir)
         if G_STATE.should_quit:
             break
-        draw(G_STATE.scene, G_STATE.interface, Camera(pos, direction))
+        draw(G_STATE.scene, G_STATE.interface, Camera(pos, direction),
+            Light(light_pos, light_dir))
         pg.display.flip()
 
     G_STATE.interface = None
