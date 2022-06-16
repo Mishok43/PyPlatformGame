@@ -1,5 +1,5 @@
 recursive-include po *.po
 recursive-include tests *
 recursive-include docs *
-include *.png
+recursive-include ui_layout *
 include *.md

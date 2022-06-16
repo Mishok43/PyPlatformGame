@@ -1,22 +1,32 @@
 """Main draw call."""
 from OpenGL import GL
 from .app_state import app_state
-from .scene import Scene, Camera
+from .scene import Scene, Camera, Light
 from .ui_descr import UI
 
-def draw(scene : Scene, interface: UI, camera: Camera):
+def draw(scene : Scene, interface: UI, camera: Camera, light: Light):
     """Render current scene and interface."""
     # shadows
-    app_state().rt_manager.bind(1024, 1024, [GL.GL_RG32F], True)
+    app_state().rt_manager.bind(2048, 2048, [GL.GL_RG32F], True)
     GL.glClearColor(0.0, 0.0, 0.0, 0.0)
     GL.glClear(GL.GL_DEPTH_BUFFER_BIT|GL.GL_COLOR_BUFFER_BIT)
-    scene.render_to_shadow()
+    scene.render_to_shadow(light)
+    depth = app_state().rt_manager.get_color(0)
+    app_state().rt_manager.set_linear_filter(depth.get_id())
+    # filtering shadows
+    app_state().rt_manager.bind(2048, 2048, [GL.GL_RG32F], False)
+    app_state().shader_manager.use_program('blur')
+    GL.glUniform2f(app_state().shader_manager.get_uniform('offset'), 1.5 / 2048.0, 1.5 / 2048.0)
+    app_state().shader_manager.set_texture('source', depth.get_id())
+    app_state().mesh_manager.draw_fullscreen_triangle()
     depth_filtered = app_state().rt_manager.get_color(0)
     app_state().rt_manager.set_linear_filter(depth_filtered.get_id())
+    depth = None
+    #scene
     app_state().rt_manager.bind(*app_state().screen_res, [GL.GL_RGBA8], True)
     GL.glClearColor(126/255,206/255,234/255,0)
     GL.glClear(GL.GL_COLOR_BUFFER_BIT|GL.GL_DEPTH_BUFFER_BIT)
-    scene.render(camera, depth_filtered.get_id())
+    scene.render(camera, light, depth_filtered.get_id())
     depth_filtered = None
     result = app_state().rt_manager.get_color(0)
     depth = app_state().rt_manager.get_depth()

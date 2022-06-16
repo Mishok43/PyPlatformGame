@@ -8,7 +8,7 @@ import pygame as pg
 import glm
 from .app_state import app_state, init_app_state, delete_app_state
 from .ui_descr import menu_ui, pause_ui, game_ui, results_ui, UI
-from .scene import Scene, Camera
+from .scene import Scene, Camera, Light
 from .renderer import draw
 from .gameplay import Gameplay, GameplayCallbacks
 from .audiomanager import AudioManager
@@ -25,6 +25,7 @@ ROTATION_SCALE: float = 1
 VERTICAL_SCALE: float = 10
 CAMERA_LIMIT_X: float = 0.7
 CAMERA_LIMIT_Y: float = 0.5
+GAME_NAME: str = "PyPlatformGame"
 
 @dataclass
 class GameState:
@@ -196,6 +197,7 @@ def input_logic() -> None:
 def main() -> None:
     """Game initialization and main loop."""
     pg.init()
+    pg.display.set_caption(GAME_NAME)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
@@ -241,6 +243,11 @@ def main() -> None:
                 30.0 + max(0, min(20, G_STATE.screen_y * VERTICAL_SCALE)),
                 cos(G_STATE.screen_x * ROTATION_SCALE)*150)
             direction = glm.normalize(-pos)
+        light_pos = glm.vec3(
+                sin(time * ROTATION_SPEED * 0.25)*400,
+                600,
+                cos(time * ROTATION_SPEED * 0.25)*400)
+        light_dir = glm.normalize(-light_pos)
         process_state(base_dir)
         delta_time = clock.tick(FPS) / 1000
         time += delta_time
@@ -252,7 +259,8 @@ def main() -> None:
         update_gameplay(delta_time, base_dir)
         if G_STATE.should_quit:
             break
-        draw(G_STATE.scene, G_STATE.interface, Camera(pos, direction))
+        draw(G_STATE.scene, G_STATE.interface, Camera(pos, direction),
+            Light(light_pos, light_dir))
         pg.display.flip()
 
     G_STATE.interface = None
