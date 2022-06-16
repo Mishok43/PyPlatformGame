@@ -12,6 +12,8 @@ Welcome to PyPlatformGame's documentation!
 
    modules
 
+   user_docs
+
 Indices and tables
 ==================
 

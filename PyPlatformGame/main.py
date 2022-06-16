@@ -25,6 +25,7 @@ ROTATION_SCALE: float = 1
 VERTICAL_SCALE: float = 10
 CAMERA_LIMIT_X: float = 0.7
 CAMERA_LIMIT_Y: float = 0.5
+GAME_NAME: str = "PyPlatformGame"
 
 @dataclass
 class GameState:
@@ -196,6 +197,7 @@ def input_logic() -> None:
 def main() -> None:
     """Game initialization and main loop."""
     pg.init()
+    pg.display.set_caption(GAME_NAME)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 4)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 1)
     pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
